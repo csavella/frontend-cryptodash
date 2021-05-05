@@ -1,6 +1,4 @@
 import React from 'react';
-import BurgerMenu from './BurgerMenu';
-import{useState, useEffect} from 'react';
 
 const Navbar = () => {
    

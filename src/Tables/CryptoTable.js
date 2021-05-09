@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CryptoRow from './Components/CryptoRow';
-
+import CryptoRow from './CryptoRow';
+import {Container, Table} from 'react-bootstrap';
+import './CryptoTable.css';
 
 
 
@@ -10,28 +11,17 @@ function CryptoTable(){
     const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
 
     useEffect(() => {
-        setInterval(() => {
-            axios.get(url)
-            .then(res =>{
-                setCoins(res.data);
-                console.log(typeof res.data);
-            })
-            .catch(error => console.log(error))
-        }, 30000);
+        axios.get(url)
+        .then(res =>{
+            setCoins(res.data);
+            //console.log(res.data);
+        })
+        .catch(error => console.log(error))
     }, []);
 
     /* Map Function */
     let renderCryptoData = () => {
         return coins.map((coin, index) => {
-            // const {rank: market_cap_rank, 
-            //     img: image, 
-            //     symbol: symbol,
-            //     price: current_price,
-            //     percentageChange: price_change_percentage_24h,
-            //     volume: total_volume,
-            //     marketCap: market_cap,
-            //     supply: total_supply            
-            // } = coin;
             return(
                 <CryptoRow 
                 rank={coin.market_cap_rank}
@@ -41,7 +31,7 @@ function CryptoTable(){
                 percentageChange={coin.price_change_percentage_24h}
                 volume={coin.total_volume}
                 marketCap={coin.market_cap}
-                supply={coin.total_supply} 
+                supply={coin.circulating_supply} 
                 />
             )
         })
@@ -49,8 +39,10 @@ function CryptoTable(){
     
 
     return(
-        <table className='crypto-home'>
+        <Container>
+        <Table striped bordered hover variant='dark'>
             <thead className='crypto-home-header'>
+            <tr>
                 <th>
                     <p>Rank</p>
                 </th>
@@ -72,16 +64,14 @@ function CryptoTable(){
                 <th>
                     <p>Max Supply</p>
                 </th>
+            </tr>
             </thead>
             <tbody>
                 {renderCryptoData()}
             </tbody>
-        </table>
+        </Table>
+        </Container>
     )
 }
-
-// let fetchRealTime = () =>{
-// }
-
 
 export default CryptoTable;

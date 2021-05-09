@@ -1,5 +1,6 @@
 import './App.css';
-import CryptoTable from './CryptoTable';
+import CryptoTable from './Tables/CryptoTable';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

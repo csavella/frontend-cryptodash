@@ -2,12 +2,6 @@ import React from 'react';
 import './CryptoTable.css';
 
 let CryptoRow = ({rank, img, symbol, price, percentageChange, volume, marketCap, supply}) =>{
-    // [price, volume, marketCap, supply].forEach(el =>{
-    //     if(el > 999){
-    //         console.log(el);
-    //         return el.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    //     }
-    // });
     return(
         <tr className="coin-row" key={rank}>
             <td className="coin-cell">

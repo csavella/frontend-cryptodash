@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -9,12 +8,10 @@ import PageTwo from './PageTwo';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
     <div className="App">
       <Navbar />
       <BurgerMenu />
-      {/* <header className="App-header">
-      </header> */}
       <div>
         <Switch>
           <Route exact path="/">

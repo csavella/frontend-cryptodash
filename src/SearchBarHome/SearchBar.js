@@ -17,9 +17,9 @@ const SearchBar = (props) =>{
         else{
             setDisplay(true);
             setSuggestions(props.coinsList.filter(coin => 
-                (coin.name.includes(event.target.value) || 
-                coin.symbol.includes(event.target.value) || 
-                coin.id.includes(event.target.value))))
+                (coin.name.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                coin.symbol.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                coin.id.toLowerCase().includes(event.target.value.toLowerCase()))))
         }
     }
     return(

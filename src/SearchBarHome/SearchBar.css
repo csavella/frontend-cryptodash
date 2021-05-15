@@ -1,0 +1,29 @@
+.search-box {
+  text-align: center;
+  width: 450px;
+}
+
+.list-group-item span {
+  font-weight: bold;
+}
+
+.symbol-container span {
+  color: gray;
+}
+
+.list-group-item .name-span {
+  padding-left: 10px;
+}
+
+.name-container {
+  float: left;
+}
+
+.symbol-container {
+  float: right;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}

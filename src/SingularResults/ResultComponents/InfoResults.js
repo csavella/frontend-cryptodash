@@ -1,0 +1,3 @@
+/* This page will include all additional information about the crypto
+    Ex: MC, Volume, ATH, Supply, etc...
+*/

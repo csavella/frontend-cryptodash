@@ -1,0 +1,3 @@
+/* This will be the results when searching for a crypto
+    or clicking on crypto icon on homepage
+*/

@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/frontend-cryptodash/static/css/main.0b31e4fb.chunk.css",
-    "main.js": "/frontend-cryptodash/static/js/main.02e0b2eb.chunk.js",
-    "main.js.map": "/frontend-cryptodash/static/js/main.02e0b2eb.chunk.js.map",
+    "main.js": "/frontend-cryptodash/static/js/main.dd314292.chunk.js",
+    "main.js.map": "/frontend-cryptodash/static/js/main.dd314292.chunk.js.map",
     "runtime-main.js": "/frontend-cryptodash/static/js/runtime-main.673f764e.js",
     "runtime-main.js.map": "/frontend-cryptodash/static/js/runtime-main.673f764e.js.map",
-    "static/js/2.c53ef9f4.chunk.js": "/frontend-cryptodash/static/js/2.c53ef9f4.chunk.js",
-    "static/js/2.c53ef9f4.chunk.js.map": "/frontend-cryptodash/static/js/2.c53ef9f4.chunk.js.map",
+    "static/js/2.21aa5f0b.chunk.js": "/frontend-cryptodash/static/js/2.21aa5f0b.chunk.js",
+    "static/js/2.21aa5f0b.chunk.js.map": "/frontend-cryptodash/static/js/2.21aa5f0b.chunk.js.map",
     "static/js/3.d04f26e5.chunk.js": "/frontend-cryptodash/static/js/3.d04f26e5.chunk.js",
     "static/js/3.d04f26e5.chunk.js.map": "/frontend-cryptodash/static/js/3.d04f26e5.chunk.js.map",
     "index.html": "/frontend-cryptodash/index.html",
     "static/css/main.0b31e4fb.chunk.css.map": "/frontend-cryptodash/static/css/main.0b31e4fb.chunk.css.map",
-    "static/js/2.c53ef9f4.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.c53ef9f4.chunk.js.LICENSE.txt"
+    "static/js/2.21aa5f0b.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.21aa5f0b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.673f764e.js",
-    "static/js/2.c53ef9f4.chunk.js",
+    "static/js/2.21aa5f0b.chunk.js",
     "static/css/main.0b31e4fb.chunk.css",
-    "static/js/main.02e0b2eb.chunk.js"
+    "static/js/main.dd314292.chunk.js"
   ]
 }

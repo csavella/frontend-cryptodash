@@ -1,20 +1,20 @@
-import './App.css';
-import Navbar from '../Navigation/Navbar';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './Home';
-import BurgerMenu from '../Navigation/BurgerMenu';
-import Search from './Search';
-import Exchanges from './Exchanges';
-import About from './About';
-import Resources from './Resources';
+import "./App.css";
+import Navbar from "../Navigation/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import BurgerMenu from "../Navigation/BurgerMenu";
+import Search from "./Search";
+import Exchanges from "./Exchanges";
+import About from "./About";
+import Resources from "./Resources";
+import ScrollToTop from "../Navigation/ScrollToTop";
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
     <div className="App">
-      <Navbar />
-      <BurgerMenu />
-      <div>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Navbar />
+        <BurgerMenu />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -22,19 +22,20 @@ function App() {
           <Route path="/search">
             <Search />
           </Route>
-          <Route path="/exchanges"> 
+          <Route path="/exchanges">
             <Exchanges />
           </Route>
-          <Route path="/about"> 
+          <Route path="/about">
             <About />
           </Route>
-          <Route path="/resources"> 
+          <Route path="/resources">
             <Resources />
           </Route>
         </Switch>
-      </div>
+      </Router>
+      <div className="content"></div>
+      <ScrollToTop />
     </div>
-    </Router>
   );
 }
 

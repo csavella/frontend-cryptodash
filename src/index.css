@@ -66,3 +66,6 @@ div.bm-menu-wrap {
 .bm-overlay {
   background: transparent !important;
 }
+.bm-burger-bars {
+  display: none;
+}

@@ -62,19 +62,18 @@ const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
       }))
       .map((column, index) =>
         index === 0 ? (
-          <Form.Check
+          <button
+            className="btn btn-link"
             type="button"
             key={column.dataField}
-            inline
-            label="Edit Table"
             id={column.dataField}
-            checked={column.toggle}
-            aria-checked={column.toggle ? "true" : "false"}
-            onClick={() =>
-              //onColumnToggle(column.dataField),
-              onColumnToggle(columns[columns.length - 1].dataField)
+            onClick={() => {
+              //onColumnToggle(column.dataField);
+              onColumnToggle(columns[columns.length - 1].dataField);
             }
-          />
+          }
+          >Edit Table
+          </button>
         ) : null
       )}
   </div>

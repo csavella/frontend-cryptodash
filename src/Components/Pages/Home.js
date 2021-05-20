@@ -1,7 +1,10 @@
+import RTPriceTable from '../Tables/RTPriceTable';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Home = () => {
 
     return ( 
-        <p>Homepage</p>
+        <RTPriceTable />
         
      );
      

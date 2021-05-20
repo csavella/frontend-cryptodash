@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CryptoRow from "./RTPriceRows";
+import RTPriceRows from "./RTPriceRows";
 import { Container, Table } from "react-bootstrap";
 import "./RTPriceTable.css";
 
@@ -24,18 +24,16 @@ function RTPriceTable() {
 
     const interval = setInterval(() => {
       callAPI();
-      console.log("interval calling");
     }, 60000);
 
     return () => clearInterval(interval);
   }, []);
 
-  /* Render data by mapping & creating each 'CryptoRow' component
-       renderCryptoData() called in returning statement on line:73 */
+  /* Render data by mapping & creating each 'CryptoRow' component */
   let renderCryptoData = () => {
     return coins.map((coin, index) => {
       return (
-        <CryptoRow
+        <RTPriceRows
           rank={coin.market_cap_rank}
           img={coin.image}
           symbol={coin.symbol}
@@ -44,6 +42,7 @@ function RTPriceTable() {
           volume={coin.total_volume}
           marketCap={coin.market_cap}
           supply={coin.circulating_supply}
+          toDelete="button"
         />
       );
     });
@@ -51,7 +50,12 @@ function RTPriceTable() {
 
   return (
     <Container>
-      <Table striped bordered hover variant="dark" size="sm" responsive>
+      <div className="row justify-content-between rt-price-table-header">
+        <h2 className="col-8 temp-title">Real Time Performance</h2>
+        <button type="button" className="col-3 edit-table-link btn btn-link">Edit Table</button>
+      </div>
+      <div className="row">
+      <Table striped bordered hover size="sm" responsive className="col-12">
         <thead className="crypto-home-header">
           <tr>
             <th>
@@ -75,10 +79,14 @@ function RTPriceTable() {
             <th>
               <p>Max Supply</p>
             </th>
+            <th className="delete">
+              <p>Delete</p>
+            </th>
           </tr>
         </thead>
         <tbody>{renderCryptoData()}</tbody>
       </Table>
+      </div>
     </Container>
   );
 }

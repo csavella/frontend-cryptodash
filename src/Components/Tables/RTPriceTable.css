@@ -2,3 +2,23 @@
   height: 30px;
   width: 30px;
 }
+
+.delete {
+  visibility: hidden;
+}
+
+.rt-price-table-header {
+    display: flex;
+}
+
+.rt-price-table-header {
+    padding-top: 2em;
+}
+
+.rt-price-table-header a {
+    align-self: flex-end;
+}
+
+.edit-table-link {
+    vertical-align: text-bottom;
+}

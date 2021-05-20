@@ -1,4 +1,5 @@
 import React from "react";
+import "./RTPriceTable.css";
 
 let RTPriceRows = ({
   rank,
@@ -9,6 +10,7 @@ let RTPriceRows = ({
   volume,
   marketCap,
   supply,
+  toDelete
 }) => {
   return (
     <tr className="coin-row" key={rank}>
@@ -57,6 +59,11 @@ let RTPriceRows = ({
               " " +
               symbol.toUpperCase()}
           </p>
+        </div>
+      </td>
+      <td className="coin-cell delete">
+        <div className="coin-item">
+          <p>{toDelete}</p>
         </div>
       </td>
     </tr>

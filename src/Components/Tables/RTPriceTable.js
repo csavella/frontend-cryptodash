@@ -1,90 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import ToggleList from "./ToggleList";
 import "./RTPriceTable.css";
 
-const columns = [
-  {
-    dataField: "rank",
-    text: "Rank",
-  },
-  {
-    dataField: "img",
-    text: "Coin",
-    formatter: imgFormatter,
-  },
-  {
-    dataField: "price",
-    text: "Price",
-  },
-  {
-    dataField: "percentageChange",
-    text: "24hr Change",
-  },
-  {
-    dataField: "volume",
-    text: "24hr Volume",
-  },
-  {
-    dataField: "marketCap",
-    text: "Market Cap",
-  },
-  {
-    dataField: "supply",
-    text: "Max Supply",
-  },
-  {
-    dataField: "toDelete",
-    text: "Delete",
-    hidden: true,
-  },
-];
-
-function imgFormatter(cell, row) {
-  return (
-    <img
-      src={cell}
-      alt={cell.symbol + "logo"}
-      className="coin-item"
-      style={({ height: 2 + "em" }, { width: 2 + "em" })}
-    />
-  );
-}
-
-const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
-  <div className="text-center">
-    {columns
-      .map((column) => ({
-        ...column,
-        toggle: toggles[column.dataField],
-      }))
-      .map((column, index) =>
-        index === 0 ? (
-          <button
-            className="btn btn-link"
-            type="button"
-            key={column.dataField}
-            id={column.dataField}
-            onClick={() => {
-              //onColumnToggle(column.dataField);
-              onColumnToggle(columns[columns.length - 1].dataField);
-            }
-          }
-          >Edit Table
-          </button>
-        ) : null
-      )}
-  </div>
-);
-
-function RTPriceTable() {
-  //only get top 10 coins
+function RTPriceTable({columns}) {
   const [coins, setCoins] = useState([]);
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
 
+  //only get top 10 coins
   const callAPI = async () => {
     try {
       const APIresults = await axios.get(url);
@@ -112,12 +39,13 @@ function RTPriceTable() {
         rank: coins[i].market_cap_rank,
         img: coins[i].image,
         symbol: coins[i].symbol,
+        name: coins[i].name,
         price: coins[i].current_price,
         percentageChange: coins[i].price_change_percentage_24h,
         volume: coins[i].total_volume,
         marketCap: coins[i].market_cap,
-        supply: coins[i].circulating_supply,
-        toDelete: "button",
+        supply: coins[i].circulating_supply + " " + coins[i].symbol.toUpperCase(),
+        //toDelete: "button",
       };
       coinData.push(tempObject);
     }
@@ -145,7 +73,7 @@ function RTPriceTable() {
                   display: "block",
                 }}
               >
-                <CustomToggleList {...props.columnToggleProps} />
+                <ToggleList columns={columns} {...props.columnToggleProps} />
               </div>
               <hr />
               <BootstrapTable

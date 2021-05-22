@@ -1,16 +1,7 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import RTPriceTable from "./RTPriceTable";
 
 function RTPriceFormattedTable() {
   const columns = [
-    {
-      dataField: "favorite",
-      text: "",
-      formatter: starIconFormatter,
-    },
     {
       dataField: "rank",
       text: "Rank",
@@ -34,10 +25,17 @@ function RTPriceFormattedTable() {
       formatter: priceFormatter,
     },
     {
-      dataField: "percentageChange",
+      dataField: "amountChange",
       text: "24hr Change",
       sort: true,
+      formatter: priceFormatter,
+    },
+    {
+      dataField: "percentageChange",
+      text: "24hr % Change",
+      sort: true,
       formatter: percentFormatter,
+      hidden: true,
     },
     {
       dataField: "volume",
@@ -52,49 +50,22 @@ function RTPriceFormattedTable() {
       formatter: priceFormatter,
     },
     {
+      dataField: "valuation",
+      text: "Fully Diluted Val",
+      sort: true,
+      formatter: priceFormatter,
+      hidden: true,
+    },
+    {
       dataField: "supply",
       text: "Max Supply",
       sort: true,
     },
-    {
-      dataField: "toDelete",
-      text: "Delete",
-      formatter: deleteIconFormatter,
-      hidden: true,
-    },
   ];
 
-  const [starClicked, setStarClicked] = useState(false);
-
-  const ChangeStarColor = (e) => {
-    setStarClicked(!starClicked);
-  };
-
-  function starIconFormatter(cell, row) {
-    let starClass = starClicked ? "starBlue" : "starBlack";
-    return (
-      <FontAwesomeIcon
-        className={starClass}
-        icon={faStar}
-        onClick={ChangeStarColor}
-      >
-        {cell}
-      </FontAwesomeIcon>
-    );
-  }
-
-  function deleteIconFormatter(cell, row) {
-    return (
-      <FontAwesomeIcon
-        className="starBlack"
-        icon={faTrash}
-      >
-        {cell}
-      </FontAwesomeIcon>
-    );
-  }
-
   function imgFormatter(cell, row) {
+    if (cell === null) return <p></p>;
+
     return (
       <img
         src={cell}
@@ -106,6 +77,8 @@ function RTPriceFormattedTable() {
   }
 
   function priceFormatter(cell, row) {
+    if (cell === null) return <p></p>;
+
     if (parseFloat(cell) < 999) {
       return <p>{"$" + cell}</p>;
     }
@@ -113,6 +86,8 @@ function RTPriceFormattedTable() {
   }
 
   function percentFormatter(cell, row) {
+    if (cell === null) return <p></p>;
+
     return <p>{parseFloat(cell.toFixed(2)).toLocaleString() + "%"}</p>;
   }
 

@@ -1,13 +1,8 @@
-import RTPriceFormattedTable from '../Tables/RTPriceFormattedTable';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
+  return <RTPriceFormattedTable />;
+};
 
-    return ( 
-        <RTPriceFormattedTable />
-        
-     );
-     
-}
- 
 export default Home;

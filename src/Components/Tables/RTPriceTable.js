@@ -44,9 +44,11 @@ function RTPriceTable({ columns }) {
         symbol: coins[i].symbol,
         name: coins[i].name,
         price: coins[i].current_price,
+        amountChange: coins[i].price_change_24h,
         percentageChange: coins[i].price_change_percentage_24h,
         volume: coins[i].total_volume,
         marketCap: coins[i].market_cap,
+        valuation: coins[i].fully_diluted_valuation,
         supply:
           coins[i].circulating_supply + " " + coins[i].symbol.toUpperCase(),
       };
@@ -54,6 +56,11 @@ function RTPriceTable({ columns }) {
     }
     return coinData;
   };
+
+  const [show, setShow] = useState(false);
+  function handleclick(event) {
+    setShow(!show);
+  }
 
   return (
     <Container>
@@ -70,24 +77,13 @@ function RTPriceTable({ columns }) {
         >
           {(props) => (
             <div>
-              <div className="row justify-content-end">
-                <div
-                  className="card card-body col-8"
-                  style={{
-                    padding: 5 + "px",
-                    border: "none",
-                  }}
-                ></div>
-                <div
-                  className="card card-body col-1 mr-auto"
-                  style={{
-                    padding: 5 + "px",
-                    border: "none",
-                    textAlign: "left",
-                  }}
-                >
-                  <ToggleList columns={columns} {...props.columnToggleProps} />
-                </div>
+              <div
+                className="row justify-content-end"
+                style={{
+                  margin: 1 + "px",
+                  border: "none",
+                }}
+              >
                 <div
                   className="card card-body col-2"
                   style={{
@@ -97,6 +93,35 @@ function RTPriceTable({ columns }) {
                 >
                   <SearchBar {...props.searchProps} />
                 </div>
+                <div
+                  className="card card-body col-4"
+                  style={{
+                    padding: 5 + "px",
+                    border: "none",
+                  }}
+                ></div>
+                <div
+                  className="card card-body col-4"
+                  style={{
+                    padding: 5 + "px",
+                    border: "none",
+                    textAlign: "left",
+                    display: show ? "block" : "none",
+                  }}
+                >
+                  <ToggleList columns={columns} {...props.columnToggleProps} />
+                </div>
+                <button
+                  id="showHideColumns"
+                  className="btn btn-light col-2"
+                  onClick={(event) => handleclick(event)}
+                  style={{
+                    height: "auto",
+                    padding: 5 + "px",
+                  }}
+                >
+                  Edit Table
+                </button>
               </div>
               <hr />
               <BootstrapTable

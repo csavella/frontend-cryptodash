@@ -1,25 +1,33 @@
+import { Form } from "react-bootstrap";
+
 function ToggleList({ columns, onColumnToggle, toggles }) {
   return (
-    <div className="text-center">
+    <div
+      className="text-center"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+      }}
+    >
       {columns
         .map((column) => ({
           ...column,
           toggle: toggles[column.dataField],
         }))
         .map((column, index) =>
-          index === 0 ? (
-            <button
-              className="btn btn-link"
-              type="button"
+          index > 0 ? (
+            <Form.Check
+              type="switch"
               key={column.dataField}
+              inline
+              label={column.text}
               id={column.dataField}
-              onClick={() => {
-                //onColumnToggle(column.dataField);
-                onColumnToggle(columns[columns.length - 1].dataField);
+              checked={column.toggle}
+              aria-checked={column.toggle ? "true" : "false"}
+              onChange={() => {
+                onColumnToggle(column.dataField);
               }}
-            >
-              Edit Table
-            </button>
+            />
           ) : null
         )}
     </div>

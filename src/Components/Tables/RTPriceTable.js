@@ -120,7 +120,7 @@ function RTPriceTable({ columns }) {
                     padding: 5 + "px",
                   }}
                 >
-                  Edit Table
+                  Show/Hide Columns
                 </button>
               </div>
               <hr />

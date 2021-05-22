@@ -7,7 +7,6 @@ import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToggleList from "./ToggleList";
 import "./RTPriceTable.css";
-import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 
 function RTPriceTable({ columns }) {
   const { SearchBar } = Search;
@@ -15,7 +14,7 @@ function RTPriceTable({ columns }) {
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false";
 
-  //only get top 10 coins
+  //only get top 30 coins
   const callAPI = async () => {
     try {
       const APIresults = await axios.get(url);
@@ -50,7 +49,6 @@ function RTPriceTable({ columns }) {
         marketCap: coins[i].market_cap,
         supply:
           coins[i].circulating_supply + " " + coins[i].symbol.toUpperCase(),
-        //toDelete: "button",
       };
       coinData.push(tempObject);
     }
@@ -64,7 +62,7 @@ function RTPriceTable({ columns }) {
       </div>
       <div className="row">
         <ToolkitProvider
-          keyField="id"
+          keyField="rank"
           data={renderCryptoData()}
           columns={columns}
           columnToggle
@@ -73,16 +71,19 @@ function RTPriceTable({ columns }) {
           {(props) => (
             <div>
               <div className="row justify-content-end">
-                <div className="card card-body col-8" style={{
+                <div
+                  className="card card-body col-8"
+                  style={{
                     padding: 5 + "px",
                     border: "none",
-                  }}></div>
+                  }}
+                ></div>
                 <div
                   className="card card-body col-1 mr-auto"
                   style={{
                     padding: 5 + "px",
-                    border: "none", 
-                    textAlign: "left", 
+                    border: "none",
+                    textAlign: "left",
                   }}
                 >
                   <ToggleList columns={columns} {...props.columnToggleProps} />

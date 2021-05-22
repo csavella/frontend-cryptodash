@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import RTPriceTable from './RTPriceTable';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import RTPriceTable from "./RTPriceTable";
 
 function RTPriceFormattedTable() {
-const columns = [
+  const columns = [
     {
       dataField: "favorite",
       text: "",
@@ -64,31 +64,33 @@ const columns = [
     },
   ];
 
-  const [starClicked, setStarClicked] = useState(true);
+  const [starClicked, setStarClicked] = useState(false);
 
   const ChangeStarColor = (e) => {
     setStarClicked(!starClicked);
   };
 
   function starIconFormatter(cell, row) {
-    let starClass = starClicked ? "starBlack" : "starBlue";
+    let starClass = starClicked ? "starBlue" : "starBlack";
     return (
       <FontAwesomeIcon
         className={starClass}
         icon={faStar}
         onClick={ChangeStarColor}
-      >{cell}</FontAwesomeIcon>
+      >
+        {cell}
+      </FontAwesomeIcon>
     );
   }
 
   function deleteIconFormatter(cell, row) {
-    let starClass = starClicked ? "starBlack" : "starBlue";
     return (
       <FontAwesomeIcon
-        className={starClass}
+        className="starBlack"
         icon={faTrash}
-        onClick={ChangeStarColor}
-      >{cell}</FontAwesomeIcon>
+      >
+        {cell}
+      </FontAwesomeIcon>
     );
   }
 
@@ -105,22 +107,16 @@ const columns = [
 
   function priceFormatter(cell, row) {
     if (parseFloat(cell) < 999) {
-      return(<p>{"$" + cell}</p>);
-    } 
-    return(
-      <p>{"$" + parseFloat(cell.toFixed(2)).toLocaleString()}</p>
-    );
+      return <p>{"$" + cell}</p>;
+    }
+    return <p>{"$" + parseFloat(cell.toFixed(2)).toLocaleString()}</p>;
   }
 
   function percentFormatter(cell, row) {
-    return(
-      <p>{parseFloat(cell.toFixed(2)).toLocaleString() + "%"}</p>
-    );
+    return <p>{parseFloat(cell.toFixed(2)).toLocaleString() + "%"}</p>;
   }
 
-  return(
-    <RTPriceTable columns={columns} />
-  );
+  return <RTPriceTable columns={columns} />;
 }
 
 export default RTPriceFormattedTable;

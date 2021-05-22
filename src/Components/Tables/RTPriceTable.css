@@ -8,19 +8,19 @@
 }
 
 .rt-price-table-header {
-    display: flex;
+  display: flex;
 }
 
 .rt-price-table-header {
-    padding-top: 2em;
+  padding-top: 2em;
 }
 
 .rt-price-table-header a {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 .edit-table-link {
-    vertical-align: text-bottom;
+  vertical-align: text-bottom;
 }
 
 .starBlack {

@@ -1,6 +1,5 @@
 function ToggleList({ columns, onColumnToggle, toggles }) {
-
-    return(
+  return (
     <div className="text-center">
       {columns
         .map((column) => ({
@@ -17,14 +16,14 @@ function ToggleList({ columns, onColumnToggle, toggles }) {
               onClick={() => {
                 //onColumnToggle(column.dataField);
                 onColumnToggle(columns[columns.length - 1].dataField);
-              }
-            }
-            >Edit Table
+              }}
+            >
+              Edit Table
             </button>
           ) : null
         )}
     </div>
-    );
+  );
 }
 
 export default ToggleList;

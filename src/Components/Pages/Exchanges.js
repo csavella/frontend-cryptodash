@@ -1,6 +1,11 @@
+import CryptoExchanges from '../Exchanges/CryptoExchanges';
 const Exchanges = () => {
     return ( 
-        <p>Exchanges Page</p>
+        <div>
+            <p>Exchanges Page</p>
+            <CryptoExchanges />
+        </div>
+       
      );
 }
  

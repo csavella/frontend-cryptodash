@@ -1,10 +1,10 @@
-import TradingChart from './TradingChart';
+// import TradingChart from './TradingChart';
 const Home = () => {
 
     return ( 
         <div>
             <p>Homepage</p>
-            <TradingChart />   
+            {/* <TradingChart />    */}
         </div>
         
      );

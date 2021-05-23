@@ -1,8 +1,16 @@
 import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
+import TradingChart from "../TradingChart";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
-  return <RTPriceFormattedTable />;
+  return (
+      <div>
+          <RTPriceFormattedTable />
+          <TradingChart />
+      </div>
+  
+    );
+
 };
 
 export default Home;

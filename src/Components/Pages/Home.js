@@ -1,10 +1,8 @@
-const Home = () => {
+import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-    return ( 
-        <p>Homepage</p>
-        
-     );
-     
-}
- 
+const Home = () => {
+  return <RTPriceFormattedTable />;
+};
+
 export default Home;

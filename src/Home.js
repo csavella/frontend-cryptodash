@@ -1,7 +1,11 @@
+import TradingChart from './TradingChart';
 const Home = () => {
 
     return ( 
-        <p>Homepage</p>
+        <div>
+            <p>Homepage</p>
+            <TradingChart />   
+        </div>
         
      );
      

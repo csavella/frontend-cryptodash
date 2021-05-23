@@ -3,6 +3,11 @@
   width: 450px;
 }
 
+#suggestions-container {
+  position: absolute;
+  width: 450px;
+}
+
 .list-group-item span {
   font-weight: bold;
 }

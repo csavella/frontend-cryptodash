@@ -1,0 +1,32 @@
+.content {
+  height: 2500px;
+}
+
+.search-box {
+  margin: 0 auto;
+  width: 450px;
+}
+
+#suggestions-container {
+  position: absolute;
+  width: 450px;
+}
+
+/* Temp placement. May have to delete elements (span el embedded in burger button)*/
+.bm-burger-button span {
+  display: none;
+}
+
+.go-to-top {
+  position: fixed;
+  width: 5%;
+  bottom: 0px;
+  right: 0px;
+  height: 50px;
+  font-size: 3rem;
+  z-index: 1;
+  cursor: pointer;
+  color: lightskyblue;
+  border: none;
+  background-color: transparent;
+}

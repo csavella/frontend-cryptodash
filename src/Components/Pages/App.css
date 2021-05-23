@@ -1,0 +1,17 @@
+.content {
+    height: 2500px;
+}
+
+.go-to-top {
+    position: fixed;
+    width: 5%;
+    bottom: 0px;
+    right: 0px;
+    height: 50px;
+    font-size: 3rem;
+    z-index: 1;
+    cursor: pointer;
+    color: lightskyblue;
+    border: none;
+    background-color: transparent;
+}

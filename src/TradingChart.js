@@ -116,56 +116,67 @@ export default function LineChart (){
             label: (Object.keys(chartdata)[0]),
             data: (Object.values(chartdata)[0]),
             fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgb(242, 169, 0)', //rgb(255, 99, 132)',
+            borderColor: 'rgba(77, 77, 78,0.2)',//255, 99, 132, 0.2)',
           },
           {
             label: (Object.keys(chartdata)[1]),
             data: (Object.values(chartdata)[1]),
             fill: false,
-            backgroundColor: 'rgb(200, 99, 100)',
-            borderColor: 'rgba(200, 99, 132, 0.2)',
+            backgroundColor: 'rgb(60, 60, 61)',//rgb(200, 99, 100)',
+            borderColor: 'rgba(201, 157, 102,0.2)',//200, 99, 132, 0.2)',
           },
           {
             label: (Object.keys(chartdata)[4]),
             data: (Object.values(chartdata)[4]),
             fill: false,
-            backgroundColor: 'rgb(155, 199, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgb(243, 186, 47)',//155, 199, 132)',
+            borderColor: 'rgba(48, 55, 54,0.2)',//255, 99, 132, 0.2)',
           },
           {
             label: (Object.keys(chartdata)[3]),
             data: (Object.values(chartdata)[3]),
             fill: false,
-            backgroundColor: 'rgb(255, 99, 32)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgb(42, 113, 208)',//255, 99, 32)',
+            borderColor: 'rgba(0,0,0,0.2)',//255, 99, 132, 0.2)',
           },
           {
             label: (Object.keys(chartdata)[2]),
             data: (Object.values(chartdata)[2]),
             fill: false,
-            backgroundColor: 'rgb(55, 99, 232)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgb(80,175,149)',//55, 99, 232)',
+            borderColor: 'rgba(92,91,94,0.2)',//255, 99, 132, 0.2)',
           },
         ],
       };
       
   const options = {
+    title:{
+      display:true,
+      text: "Cryptocurrency Trading Rates"
+    },
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
-      yAxes: [
-        {
+      yAxes: [{
+          scaleLabel:{
+            display:true,
+            labelString:"$",
+          },
           ticks: {
             beginAtZero: true,
-          },
-          stacked: true
-        },
-      ],
+            callback: value => '$'
+            // callback:function(value,index,values){
+            //   return '$' + value;
+            //}
+          },          
+      }],
     },
   };
   return(
-    <div>
+    <div className="trading-chart" style={{height:"400px",width:"700px"}}>
       <div className='header'>
-        <h1 className='title'>Cryptocurrency Trading Rates</h1>
+        <h1 className='title' style={{fontFamily:"sans-serif"}}>Cryptocurrency Trading Rates</h1>
         <button onClick={handle24h}>24h</button>
         <button onClick={handle7d}>7d</button>
       </div>

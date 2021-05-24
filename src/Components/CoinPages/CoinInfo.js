@@ -49,7 +49,7 @@ const CoinInfo = (props) =>{
     return (
         <div>
             <Card>
-                <Card.Header className="result-header bg-success">
+                <Card.Header className="result-header bg-info">
                     <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
                 </Card.Header> 
                 <Card.Body>
@@ -76,19 +76,6 @@ const CoinInfo = (props) =>{
             </Card>
         </div>
     );
-    /*
-    return (
-        <div>
-            <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
-            <TradingViewGraph symbol={basicInfo.symbol} />
-            <MarketInfo data={basicInfo}/>
-            <div className="description-box">
-                {checkDescription() ? <div><h1>Description</h1><div>{parseDescription()}</div></div> : null}
-            </div>
-        </div>
-    );
-    */
-    
 }
 
 

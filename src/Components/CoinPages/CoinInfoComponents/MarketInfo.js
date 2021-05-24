@@ -18,7 +18,6 @@ const MarketInfo = (props) =>{
 
     return(
         <div className="market-data-container">
-            <h1>MarketData</h1>
             <div className="data-container">
                 {marketData && Object.keys(marketData).slice(5, 24).map((key, index) =>{
                     console.log(key + ": " + marketData[key]);
@@ -39,7 +38,8 @@ const MarketInfo = (props) =>{
                     if(marketData[key] === null){
                         return (
                             <div>
-                                <span>{capitalizedKey + ": N/A"}</span>
+                                <span className="data-key">{capitalizedKey + ": "}</span>
+                                <span className="data-value">N/A</span>
                             </div>
                         )
                     }
@@ -47,14 +47,16 @@ const MarketInfo = (props) =>{
                         let date = marketData[key].split('T');
                         return (
                             <div>
-                                <span>{capitalizedKey + ": " + date[0]}</span>
+                                <span className="data-key">{capitalizedKey + ": "}</span>
+                                <span className="data-value">{date[0]}</span>
                             </div>
                         )
                     }
                     else if(isInteger(marketData[key])) {
                         return (
                             <div>
-                                <span>{capitalizedKey + ": " + marketData[key].toLocaleString()}</span>
+                                <span className="data-key">{capitalizedKey + ": "}</span>
+                                <span className="data-value">{marketData[key].toLocaleString()}</span>
                             </div>
                         )
 
@@ -63,23 +65,25 @@ const MarketInfo = (props) =>{
                         if(percentIndicator){
                             return (
                                 <div>
-                                    <span>{capitalizedKey + ": " + marketData[key].toFixed(3) + "%"}</span>
+                                    <span className="data-key">{capitalizedKey + ": "}</span>
+                                    <span className="data-value">{marketData[key].toFixed(3) + "%"}</span>
                                 </div>
                             )
                         }
                         return (
                             <div>
-                                <span>{capitalizedKey + ": " + parseFloat(marketData[key].toFixed(20)).toLocaleString()}</span>
+                                <span className="data-key">{capitalizedKey + ": "}</span>
+                                <span className="data-value">{parseFloat(marketData[key].toFixed(20)).toLocaleString()}</span>
                             </div>
                         )
                     }
                     return (
                         <div>
-                            <span>{capitalizedKey + ": " + marketData[key]}</span>
+                            <span className='data-key'>{capitalizedKey + ": "}</span>
+                            <span className="data-value">{marketData[key]}</span>
                         </div>
                     )
                 })}
-                
             </div>
         </div>
     )

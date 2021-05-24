@@ -5,6 +5,8 @@ import CoinInfoHeader from './CoinInfoComponents/CoinInfoHeader';
 import TradingViewGraph from './CoinInfoComponents/TradingViewGraph';
 import MarketInfo from './CoinInfoComponents/MarketInfo';
 import ReactHtmlParser from 'react-html-parser';
+import {Card} from 'react-bootstrap';
+import './CoinInfo.css';
 
 const CoinInfo = (props) =>{
     const {id} = useParams();
@@ -46,6 +48,37 @@ const CoinInfo = (props) =>{
     /* use flex, divide into at least 3 different divs*/
     return (
         <div>
+            <Card>
+                <Card.Header className="result-header bg-success">
+                    <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
+                </Card.Header> 
+                <Card.Body>
+                    <TradingViewGraph symbol={basicInfo.symbol} />
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Header>
+                    <h1>Market Data</h1> 
+                </Card.Header>
+                <Card.Body>
+                    <MarketInfo data={basicInfo}/>
+                </Card.Body> 
+            </Card>
+            <Card>
+                <Card.Header>
+                    <h1>Description</h1>
+                </Card.Header>
+                <Card.Body>
+                    <div className="description-box">
+                        {checkDescription() ? <div>{parseDescription()}</div> : null}
+                    </div>
+                </Card.Body>
+            </Card>
+        </div>
+    );
+    /*
+    return (
+        <div>
             <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
             <TradingViewGraph symbol={basicInfo.symbol} />
             <MarketInfo data={basicInfo}/>
@@ -54,6 +87,7 @@ const CoinInfo = (props) =>{
             </div>
         </div>
     );
+    */
     
 }
 

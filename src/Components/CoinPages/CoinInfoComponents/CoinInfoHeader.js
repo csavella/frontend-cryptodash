@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import '../CoinInfo.css';
 const CoinInfoHeader = ({_id, _name, _img}) =>{
     // Not set to real time yet. Just grabs real time data on initial load.
     const [realTimePrice, setRealTimePrice] = useState();
@@ -15,10 +15,14 @@ const CoinInfoHeader = ({_id, _name, _img}) =>{
     }, [_id, _name, realTimePrice]);
   
     return (
-        <div key={_id}>
-            <span ><img src={_img} alt={_id + ' logo'} /></span>
-            <span >{_name}</span>
-            <span >{realTimePrice}</span> 
+        <div className="result-header-container" key={_id}>
+            <div className="image-name-container">
+                <span><img src={_img} alt={_id + ' logo'} /></span>
+                <span >{_name}</span>
+            </div>
+            <div className="price-percent-container">
+                <span >{"$" + realTimePrice}</span> 
+            </div>
         </div>
     )
 }

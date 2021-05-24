@@ -5,6 +5,7 @@
 
 #suggestions-container {
   position: absolute;
+  z-index: 1;
   width: 450px;
 }
 
@@ -28,7 +29,7 @@
   float: right;
 }
 
-img {
+.name-container img {
   width: 30px;
   height: 30px;
 }

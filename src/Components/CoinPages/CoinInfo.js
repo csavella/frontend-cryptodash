@@ -4,6 +4,7 @@ import axios from 'axios';
 import CoinInfoHeader from './CoinInfoComponents/CoinInfoHeader';
 import TradingViewGraph from './CoinInfoComponents/TradingViewGraph';
 import MarketInfo from './CoinInfoComponents/MarketInfo';
+import TradeableExchanges from './CoinInfoComponents/TradeableExchanges';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'react-bootstrap';
 import './CoinInfo.css';
@@ -49,7 +50,7 @@ const CoinInfo = (props) =>{
     return (
         <div>
             <Card>
-                <Card.Header className="result-header bg-info">
+                <Card.Header className="result-header">
                     <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
                 </Card.Header> 
                 <Card.Body>
@@ -72,6 +73,14 @@ const CoinInfo = (props) =>{
                     <div className="description-box">
                         {checkDescription() ? <div>{parseDescription()}</div> : null}
                     </div>
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Header>
+                    <h1>Exchanges</h1>
+                </Card.Header>
+                <Card.Body>
+                    <TradeableExchanges id={id} />
                 </Card.Body>
             </Card>
         </div>

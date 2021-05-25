@@ -11,6 +11,7 @@ const SearchBar = (props) =>{
     const [suggestions, setSuggestions] = useState([]);
 
     const inputOnChange = (event) =>{
+        event.preventDefault();
         /* if no input, then hide suggestions */
         if(event.target.value.length === 0){
             setDisplay(false);
@@ -23,6 +24,7 @@ const SearchBar = (props) =>{
                 coin.id.toLowerCase().includes(event.target.value.toLowerCase()))))
         }
     }
+    
 
     return(
         <div>

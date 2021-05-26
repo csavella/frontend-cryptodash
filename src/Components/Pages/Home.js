@@ -2,10 +2,13 @@ import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
 import TradingChart from "../TradingChart";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Home = () => {
+const Home = ({ favoriteCoins, setFavoriteCoins }) => {
   return (
       <div>
-          <RTPriceFormattedTable />
+          <RTPriceFormattedTable
+            favoriteCoins={favoriteCoins}
+            setFavoriteCoins={setFavoriteCoins}
+          />
           <TradingChart />
       </div>
   

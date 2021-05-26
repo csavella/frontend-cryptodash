@@ -1,11 +1,11 @@
 import React from 'react';
 import './Glossary.css';
 import data from './Glossary.json';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Glossary = () =>{
-
+    /* When letter is clicked at top, will scroll to
+    designated element containing letter in page */
     const handleScroll = (e) =>{
         document.getElementById("item-" + e.target.value).scrollIntoView();
     }
@@ -15,7 +15,7 @@ const Glossary = () =>{
             <div className="glossary-header-container">
                 {Object.keys(data).map(key => {
                     return(
-                        <span><input type="button" value={key} onClick={e => handleScroll(e)}/></span>
+                        <span><input type="button" className="letter-nav bg-light" value={key} onClick={e => handleScroll(e)}/></span>
                     )
                 })}
             </div>

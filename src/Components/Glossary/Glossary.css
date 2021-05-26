@@ -1,10 +1,15 @@
-div {
+.glossary-container div {
   font-family: "Gilroy";
 }
 
 .glossary-header-container {
   margin: 0 auto;
   width: 700px;
+}
+
+.letter-nav {
+  width: 53px;
+  height: 40px;
 }
 
 .item > h1 {

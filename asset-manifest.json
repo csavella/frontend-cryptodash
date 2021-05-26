@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/frontend-cryptodash/static/css/main.db5eec35.chunk.css",
-    "main.js": "/frontend-cryptodash/static/js/main.b62ff6c8.chunk.js",
-    "main.js.map": "/frontend-cryptodash/static/js/main.b62ff6c8.chunk.js.map",
-    "runtime-main.js": "/frontend-cryptodash/static/js/runtime-main.f4bd75de.js",
-    "runtime-main.js.map": "/frontend-cryptodash/static/js/runtime-main.f4bd75de.js.map",
+    "main.css": "/frontend-cryptodash/static/css/main.495279dc.chunk.css",
+    "main.js": "/frontend-cryptodash/static/js/main.b875b11f.chunk.js",
+    "main.js.map": "/frontend-cryptodash/static/js/main.b875b11f.chunk.js.map",
+    "runtime-main.js": "/frontend-cryptodash/static/js/runtime-main.bc7dfdc3.js",
+    "runtime-main.js.map": "/frontend-cryptodash/static/js/runtime-main.bc7dfdc3.js.map",
     "static/css/2.274d7a3f.chunk.css": "/frontend-cryptodash/static/css/2.274d7a3f.chunk.css",
-    "static/js/2.342f4451.chunk.js": "/frontend-cryptodash/static/js/2.342f4451.chunk.js",
-    "static/js/2.342f4451.chunk.js.map": "/frontend-cryptodash/static/js/2.342f4451.chunk.js.map",
-    "static/js/3.0d78870f.chunk.js": "/frontend-cryptodash/static/js/3.0d78870f.chunk.js",
-    "static/js/3.0d78870f.chunk.js.map": "/frontend-cryptodash/static/js/3.0d78870f.chunk.js.map",
+    "static/js/2.2f15cc1a.chunk.js": "/frontend-cryptodash/static/js/2.2f15cc1a.chunk.js",
+    "static/js/2.2f15cc1a.chunk.js.map": "/frontend-cryptodash/static/js/2.2f15cc1a.chunk.js.map",
+    "static/js/3.9277466f.chunk.js": "/frontend-cryptodash/static/js/3.9277466f.chunk.js",
+    "static/js/3.9277466f.chunk.js.map": "/frontend-cryptodash/static/js/3.9277466f.chunk.js.map",
     "index.html": "/frontend-cryptodash/index.html",
     "static/css/2.274d7a3f.chunk.css.map": "/frontend-cryptodash/static/css/2.274d7a3f.chunk.css.map",
-    "static/css/main.db5eec35.chunk.css.map": "/frontend-cryptodash/static/css/main.db5eec35.chunk.css.map",
-    "static/js/2.342f4451.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.342f4451.chunk.js.LICENSE.txt"
+    "static/css/main.495279dc.chunk.css.map": "/frontend-cryptodash/static/css/main.495279dc.chunk.css.map",
+    "static/js/2.2f15cc1a.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.2f15cc1a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f4bd75de.js",
+    "static/js/runtime-main.bc7dfdc3.js",
     "static/css/2.274d7a3f.chunk.css",
-    "static/js/2.342f4451.chunk.js",
-    "static/css/main.db5eec35.chunk.css",
-    "static/js/main.b62ff6c8.chunk.js"
+    "static/js/2.2f15cc1a.chunk.js",
+    "static/css/main.495279dc.chunk.css",
+    "static/js/main.b875b11f.chunk.js"
   ]
 }

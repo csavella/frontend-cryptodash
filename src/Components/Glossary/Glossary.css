@@ -1,0 +1,36 @@
+.glossary-container div {
+  font-family: "Gilroy";
+}
+
+.glossary-header-container {
+  margin: 0 auto;
+  width: 700px;
+}
+
+.letter-nav {
+  width: 53px;
+  height: 40px;
+}
+
+.item > h1 {
+  font-style: normal;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 42px;
+  margin: 10px 0 0;
+  padding: 0;
+  color: #000;
+}
+
+.item-definitions {
+  padding: 10px;
+  padding-left: 50px;
+}
+
+.item-definitions span {
+  font-size: 20px;
+}
+
+.term > span {
+  font-weight: 700;
+}

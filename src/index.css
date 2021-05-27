@@ -67,5 +67,6 @@ div.bm-menu-wrap {
   background: transparent !important;
 }
 .bm-burger-bars {
-  display: none;
+  height: 0% !important;
+  width: 0%;
 }

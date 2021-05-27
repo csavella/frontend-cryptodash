@@ -1,14 +1,18 @@
 import PairTable from '../CryptoPair/PairTable';
-const Home = () => {
+import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
+import TradingChart from "../TradingChart";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-    return ( 
-        <div>
-             <p>Homepage</p>
-             <PairTable />
-        </div>
-        
-     );
-     
-}
- 
+const Home = () => {
+  return (
+      <div>
+          <RTPriceFormattedTable />
+          <TradingChart />
+          <PairTable />
+      </div>
+  
+    );
+
+};
+
 export default Home;

@@ -24,6 +24,9 @@ export default class SlideMenu extends React.Component {
         <Link to="/resources" id="resources" className="menu-item">
           Resources
         </Link>
+        <Link to="/contact" id="contact" className="menu-item">
+          Contact Us
+        </Link>
       </Menu>
     );
   }

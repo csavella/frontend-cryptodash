@@ -9,6 +9,7 @@ import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import Glossary from "../Glossary/Glossary";
+import Contact from "./Contact";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/resources">
             <Resources />
+          </Route>
+          <Route path="/contact">
+            <Contact />
           </Route>
         </Switch>
       </Router>

@@ -9,6 +9,7 @@ import Exchanges from "./Exchanges";
 import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
+import Glossary from "../Glossary/Glossary";
 
 function App() {
   const [favoriteCoins, setFavoriteCoins] = useState([]);
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/exchanges">
             <Exchanges />
+          </Route>
+          <Route path="/glossary">
+            <Glossary />
           </Route>
           <Route path="/about">
             <About />

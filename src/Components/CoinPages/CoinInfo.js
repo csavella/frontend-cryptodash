@@ -49,7 +49,7 @@ const CoinInfo = (props) =>{
     /* use flex, divide into at least 3 different divs*/
     return (
         <div>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header className="result-header">
                     <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
                 </Card.Header> 
@@ -57,7 +57,7 @@ const CoinInfo = (props) =>{
                     <TradingViewGraph symbol={basicInfo.symbol} />
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Market Data</h1> 
                 </Card.Header>
@@ -65,7 +65,7 @@ const CoinInfo = (props) =>{
                     <MarketInfo data={basicInfo}/>
                 </Card.Body> 
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Description</h1>
                 </Card.Header>
@@ -75,7 +75,7 @@ const CoinInfo = (props) =>{
                     </div>
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Exchanges</h1>
                 </Card.Header>

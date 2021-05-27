@@ -27,7 +27,7 @@ const ScrollToTop = () =>{
   return (
     <button className="go-to-top">
      <FaArrowCircleUp onClick={scrollToTop} 
-     style={{display: visible ? 'inline' : 'none'}} />
+     style={{display: visible ? 'inline' : 'none' , marginBottom: 1.5 + "em"}} />
     </button>
   );
 }

@@ -39,7 +39,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      <div className="content"></div>
       <ScrollToTop />
     </div>
   );

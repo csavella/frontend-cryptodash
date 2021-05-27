@@ -7,8 +7,9 @@ const Home = () => {
   return (
       <div>
           <RTPriceFormattedTable />
-          <TradingChart />
           <PairTable />
+          <TradingChart />
+          
       </div>
   
     );

@@ -56,25 +56,21 @@ export default function PairTable(){
     }
 
     /* Create first dropdown list */   
-    let defaultOption;
     useEffect(() =>{
         let options = [];
         selectCoinsList.map(element => (
             options.push(element.name)          
         ))
         setDropdownOptions(options);
-        defaultOption = options[0];
     },[selectCoinsList])
 
   /* second dropdown list */   
-    let defaultOption2;
     useEffect(() => {      
        let options2 = [];
        selectVsCurrencies.map(element =>(
            options2.push(element.toUpperCase())
        ))
        setDropdownOptions2(options2);
-       defaultOption2 = options2[0];
     },[selectVsCurrencies])
     
     function createRowData(key,data){
@@ -142,8 +138,6 @@ export default function PairTable(){
         }
     },[selectVsCurrencies,selectCoinsList])
 
-
-
     function handleCompare(e){
         e.preventDefault();
         if(selectCoins[0].length !== 0 && selectCoins[1].length !== 0){
@@ -157,7 +151,9 @@ export default function PairTable(){
     }
        
     useEffect(() => {
-        if(popupData.length !== 0)
+        if(popupData[0] !== 'Select a coin' 
+        && popupData[1] !== 'Select a coin' 
+        && popupData.length !== 0)
            setPopupBox('true');     
     },[popupData])
 
@@ -171,6 +167,7 @@ export default function PairTable(){
              data[0] = popupData[0];
              setTableData(Object.values(data));
         }
+        setPopupBox('false');
     }
 
     function handleClose(e){    
@@ -227,10 +224,12 @@ export default function PairTable(){
             />
             <div >
                 <fieldset>
-                    <legend>Compare Coins</legend>
-                <Dropdown className="dropdown" options={dropdown_options} onChange={getSelect1} value={defaultOption} placeholder="Select a coin" />
-                <Dropdown className="dropdown" options={dropdown_options2} onChange={getSelect2} value={defaultOption2} placeholder="Select a coin" />
-                <button  value="Compare" onClick={handleCompare} className="compare-button">Compare</button>  
+                    <legend className="compare-coins-header">Compare Coins</legend>
+                    <div className="select-compare-div">
+                        <Dropdown className="dropdown" options={dropdown_options} onChange={getSelect1} value={'Select a coin'} placeholder="Select a coin" />
+                        <Dropdown className="dropdown" options={dropdown_options2} onChange={getSelect2} value={'Select a coin'} placeholder="Select a coin" />
+                        <button  value="Compare" onClick={handleCompare} className="compare-button">Compare</button>  
+                    </div>
                 </fieldset>  
             </div>
                 {popupBox === 'true' && <CompareCoinsPopup content =

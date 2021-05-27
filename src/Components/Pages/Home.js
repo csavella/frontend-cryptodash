@@ -1,7 +1,11 @@
+import PairTable from '../CryptoPair/PairTable';
 const Home = () => {
 
     return ( 
-        <p>Homepage</p>
+        <div>
+             <p>Homepage</p>
+             <PairTable />
+        </div>
         
      );
      

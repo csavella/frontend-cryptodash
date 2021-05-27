@@ -1,3 +1,4 @@
+import {useState} from "react";
 import RTPriceTable from "./RTPriceTable";
 import FavoriteCoins from "./FavoriteCoins";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -71,6 +72,8 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
     },
   ];
 
+  const [iconColor, setIconColor] = useState("black");
+
   function handleclick(row) {
     if (row === null) return;
     var tempFaves = favoriteCoins;
@@ -78,12 +81,23 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
     setFavoriteCoins([...tempFaves]);
   }
 
+  function changeColor(){
+    if(iconColor === "black") {
+      setIconColor("blue");
+    } else {
+      setIconColor("black");
+    }
+    
+  }
+
   function starIconFormatter(cell, row) {
     if (cell === null) return <p></p>;
     return (
-      <button className="btn btn-light favorite" onClick={() => handleclick({ row })}>
+      <button className="btn favorite" onClick={() => handleclick({ row })} style={{backgroundColor: "transparent"}}>
       <FontAwesomeIcon
+        onClick={() => changeColor()}
         icon={faStar}
+        style={{color: {iconColor}}}
       >{cell}</FontAwesomeIcon></button>
     );
   }
@@ -119,7 +133,7 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
   return (
     <div>
       <RTPriceTable columns={columns} />
-      <FavoriteCoins faves={favoriteCoins}/>
+      <FavoriteCoins faves={ favoriteCoins} setFavoriteCoins={setFavoriteCoins }/>
     </div>
   );
 }

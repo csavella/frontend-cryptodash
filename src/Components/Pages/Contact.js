@@ -71,6 +71,8 @@ const Contact = () => {
           console.log("FAILED...", error);
         }
       );
+
+    alert('Thank you! We received your message and we will get back to you back ASAP.');
   }
 
   return (

@@ -23,7 +23,8 @@ export default function PairTable(){
     const[pairdata1,setPairData1] = useState(); // table row 1: raw data of coin pair from url
     const[pairdata2,setPairData2] = useState(); // table row 2: raw data of coin pair from url
     const[pairdata3,setPairData3] = useState(); // table row 3: raw data of coin pair from url
-
+    const[time,setTime] = useState([]);
+    const[compareIsClicked,setIsClicked] = useState('false');
     const market_data_url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=%271h%2C24h%27';
     const supported_currencies_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
   
@@ -55,6 +56,15 @@ export default function PairTable(){
         }
     }
 
+    useEffect(() => {
+        if(pairdata1 && pairdata2 && pairdata3)
+            buildTable(pairdata1,pairdata2,pairdata3); 
+        const timer = setTimeout(() =>{
+            setTime(time +1);
+        },60000);
+        return () => clearTimeout(timer);
+    },[time]);
+
     /* Create first dropdown list */   
     useEffect(() =>{
         let options = [];
@@ -77,10 +87,14 @@ export default function PairTable(){
         let market = 'Not Available';
         let uppercase_key = key[0].toUpperCase();
         key[0] = key[0].toLowerCase();
+
         let time = data.market_data.last_updated.split('T');
         time = time[1].split('.');
-        time = time[0];
- 
+        time = time[0].split(':');
+        let UTC_to_PST = (parseInt(time[0]) - 7 ) +':' + time[1] + ':' + time[2];
+        if(parseInt(time[0]) - 7 === 24)
+           UTC_to_PST = '00:' + time[1] + ':'+ time[2];
+        
         data.tickers.forEach(element => {
             if(element.target === uppercase_key){
                 market = element.market.name;
@@ -95,7 +109,7 @@ export default function PairTable(){
             low: data.market_data.low_24h[key],
             change: data.market_data.price_change_percentage_24h_in_currency[key]+'%',
             volume: data.market_data.total_volume[key],
-            time: time
+            time: UTC_to_PST//time
         } 
     }
     /*Creates pair data for pop up box*/
@@ -108,8 +122,7 @@ export default function PairTable(){
       }   
     },[pairdata])
 
-    /*Creates pair data for initial table */
-    useEffect(() =>{
+    function buildTable(pairdata1,pairdata2,pairdata3){
         if(pairdata1 && pairdata2 && pairdata3){
             if(pairdata1.length !== 0 && pairdata2 !== 0 && pairdata3 !== 0){
                 let pair_data = [];
@@ -127,6 +140,10 @@ export default function PairTable(){
                 setTableData(table); 
             }  
         }
+    }
+    /*Creates pair data for initial table */
+    useEffect(() =>{
+        buildTable(pairdata1,pairdata2,pairdata3);  
     },[pairdata1,pairdata2,pairdata3])
 
   /* Creates initial table */
@@ -137,13 +154,14 @@ export default function PairTable(){
             getPairData(selectVsCurrencies[2],selectCoinsList[3].id,setPairData3);    
         }
     },[selectVsCurrencies,selectCoinsList])
-
+ 
     function handleCompare(e){
         e.preventDefault();
         if(selectCoins[0].length !== 0 && selectCoins[1].length !== 0){
            for( var i = 0; i < selectCoinsList.length; i++){
              if(selectCoins[0] === selectCoinsList[i].name){ 
                 getPairData(selectCoins[1], selectCoinsList[i].id,setPairData); 
+                setIsClicked('true');
                 break;          
              }                           
            }           
@@ -153,14 +171,17 @@ export default function PairTable(){
     useEffect(() => {
         if(popupData[0] !== 'Select a coin' 
         && popupData[1] !== 'Select a coin' 
-        && popupData.length !== 0)
-           setPopupBox('true');     
+        && popupData.length !== 0 
+        && compareIsClicked === 'true'){
+            setPopupBox('true');  
+            setIsClicked('false');
+        }
+             
     },[popupData])
 
     function handleAddToTable(e){
         e.preventDefault();   
-          
-        if(tabledata[0] !== popupData[0]){
+        if(tabledata[0].name !== popupData[0].name){
              let data = tabledata;
              data[2] = data[1];
              data[1] = data[0];

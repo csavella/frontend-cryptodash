@@ -1,71 +1,113 @@
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useState } from "react";
 
 const Contact = () => {
+  const [emailAddress, setEmailAdress] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [message, setMessage] = useState("");
 
   function sendMessage() {
-      console.log("hello");
+    console.log("Name: " + fullName);
+    console.log("Email: " + emailAddress);
+    console.log("Message: " + message);
+  }
+
+  function handleNameChange(value) {
+    setFullName(value);
+  }
+  function handleEmailChange(value) {
+    setEmailAdress(value);
+  }
+  function handleMessageChange(value) {
+    setMessage(value);
   }
 
   function sendEmail() {
-    let templateParams = {
-        to_name: 'Chasity Savella, Eric Anderson, Chiharu Akiyama',
-        from_name: 'CryptoDash App',
-        fullname: fullname,
-        email: email,
-        message: message
+    var templateParams = {
+      to_name: "Chasity Savella, Eric Anderson, Chiharu Akiyama",
+      from_name: "CryptoDash App",
+      fullname: fullName,
+      email: emailAddress,
+      message: message,
     };
-    emailjs.send('csfrontend', 'template_xwnwtxf', templateParams, 'user_7mBuykiL1mjdR966UDCWz')
-    .then((result) => {
-        console.log('SUCCESS!', result.status, result.text);
-    }, (error) => {
-        console.log('FAILED...', error);
-    });
-}
+
+    emailjs
+      .send(
+        "csavella_frontend",
+        "template_xwnwtxf",
+        templateParams,
+        "user_7mBuykiL1mjdR966UDCWz"
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.status, result.text);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
+  }
 
   return (
-    <div class="rsvp">
-      <div class="row rsvpform z-depth-1">
-        <div class="col">
-          <div class="col-md-auto">
-            <form>
-              <div class="form-group fname">
-                <input
-                  id="fullname"
-                  name="fullname"
-                  className="form-control"
-                  placeholder="Full Name"
+    <div className="contact-us container">
+      <div className="row contact-form z-depth-1">
+        <div className="col">
+          <div className="col-md-auto">
+            <h2 style={{ textAlign: "center", margin: 2 + "em" }}>
+              Send us a message!
+            </h2>
+            <Form>
+              <Form.Group style={{ marginBottom: 1 + "em" }}>
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  as="input"
+                  placeholder="Enter full name"
+                  onChange={(e) => handleNameChange(e.target.value)}
                   required
                 />
-              </div>
-              <div class="form-group emailaddress">
-                <input
+                <Form.Text
+                  id="fullName"
+                  name="fullName"
+                  value={fullName}
+                />
+              </Form.Group>
+              <Form.Group style={{ marginBottom: 1 + "em" }}>
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control
+                  as="input"
                   type="email"
-                  className="form-control"
-                  id="emailaddress"
-                  name="emailaddress"
-                  placeholder="Email"
+                  placeholder="Enter email"
+                  onChange={(e) => handleEmailChange(e.target.value)}
                   required
-                  aria-describedby="emailHelp"
                 />
-              </div>
-              <div class="form-group">
-                <label for="message">
-                  Message
-                </label>
-                <textarea
-                  class="form-control"
+                <Form.Text
+                  id="emailAddress"
+                  name="emailAddress"
+                  aria-describedby="emailHelp"
+                  value={emailAddress}
+                />
+              </Form.Group>
+              <Form.Group style={{ marginBottom: 1 + "em" }}>
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
                   id="message"
-                  rows="3"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="btn btn-dark btn-block rsvpsubmit"
-                onClick={sendMessage()}
+                  value={message}
+                  onChange={(e) => handleMessageChange(e.target.value)}
+                  placeholder="Type a message"
+                ></Form.Control>
+              </Form.Group>
+              <Button
+                variant="dark"
+                className="btn btn-dark btn-block"
+                onClick={() => sendEmail()}
               >
                 Submit
-              </button>
-            </form>
+              </Button>
+            </Form>
           </div>
         </div>
       </div>

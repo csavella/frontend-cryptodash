@@ -24,6 +24,15 @@ const Contact = () => {
     setMessage(value);
   }
 
+  function checkEmailAddress() {
+    var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    if(emailAddress.match(email_regex)) {
+        return true;
+    }
+    alert("Error: please enter a valid email address")
+    return false;
+}
+
   function sendEmail() {
     var templateParams = {
       to_name: "Chasity Savella, Eric Anderson, Chiharu Akiyama",
@@ -32,6 +41,20 @@ const Contact = () => {
       email: emailAddress,
       message: message,
     };
+
+    if(fullName === ""){
+      alert("ERROR: Name is required.");
+      return;
+    }
+
+    if(emailAddress === "") {
+      alert("ERROR: Email is required.");
+      return;
+    }
+
+    if(!checkEmailAddress()){
+      return;
+    }
 
     emailjs
       .send(

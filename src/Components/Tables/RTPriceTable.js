@@ -18,7 +18,6 @@ function RTPriceTable({ columns }) {
   const callAPI = async () => {
     try {
       const APIresults = await axios.get(url);
-      console.log(APIresults.data);
       setCoins(APIresults.data);
     } catch (err) {
       console.log(err.message);

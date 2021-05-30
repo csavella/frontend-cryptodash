@@ -37,11 +37,15 @@ const CoinInfo = (props) =>{
     }
 
     const parseDescription = () =>{
+        console.log(description);
         const descriptionEl = description
         .split("https://www.coingecko.com/en/coins/")
         .join("/frontend-cryptodash/search/")
         .split("/coins/")
-        .join("/frontend-cryptodash/search/");
+        .join("/frontend-cryptodash/search/")
+        .split('">')
+        .join('" target="_blank" rel="noopener noreferrer">');
+        /* target="_blank" rel="noopener noreferrer" */
 
         return ReactHtmlParser(descriptionEl);
     }

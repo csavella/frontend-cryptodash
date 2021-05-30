@@ -18,6 +18,7 @@ function RTPriceTable({ columns }) {
   const callAPI = async () => {
     try {
       const APIresults = await axios.get(url);
+      console.log(APIresults.data);
       setCoins(APIresults.data);
     } catch (err) {
       console.log(err.message);
@@ -51,6 +52,7 @@ function RTPriceTable({ columns }) {
         valuation: coins[i].fully_diluted_valuation,
         supply:
           coins[i].circulating_supply + " " + coins[i].symbol.toUpperCase(),
+        id: coins[i].id,
       };
       coinData.push(tempObject);
     }

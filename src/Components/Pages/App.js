@@ -27,17 +27,16 @@ function App() {
         <Navbar />
         <BurgerMenu />
         <Switch>
-          
-          <pairContext.Provider value={pairTableValue}>
-            <chartContext.Provider value={chartValue}>
-               <Route exact path="/">
-                 <Home
-                   favoriteCoins={favoriteCoins}
-                   setFavoriteCoins={setFavoriteCoins}
-                 />
-               </Route>
-            </chartContext.Provider>
-          </pairContext.Provider>
+          <Route exact path="/">
+            <pairContext.Provider value={pairTableValue}>
+              <chartContext.Provider value={chartValue}>
+                <Home
+                  favoriteCoins={favoriteCoins}
+                  setFavoriteCoins={setFavoriteCoins}
+                />
+              </chartContext.Provider>
+            </pairContext.Provider>
+          </Route>         
           <Route path="/search">
             <Search />
           </Route>

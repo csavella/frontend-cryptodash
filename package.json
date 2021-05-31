@@ -26,13 +26,9 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-<<<<<<< HEAD
     "react-table-6": "^6.11.0",
     "react-html-parser": "^2.0.2",
-=======
     "react-table": "^7.7.0",
-    "react-table-6": "^6.11.0",
->>>>>>> aba35d219c1d1bd76d617f64b5136542d2db1f94
     "react-tradingview-widget": "^1.3.2",
     "underscore": "^1.13.1",
     "web-vitals": "^1.1.1"

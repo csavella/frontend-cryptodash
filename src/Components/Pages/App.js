@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 import Navbar from "../Navigation/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -11,7 +11,7 @@ import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import Glossary from "../Glossary/Glossary";
 import {pairContext} from "../CryptoPair/pairContext";
-import React, {useState,useMemo} from "react";
+// import React, {useState,useMemo} from "react";
 import Contact from "./Contact";
 
 function App() {

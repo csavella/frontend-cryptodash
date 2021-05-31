@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Line } from 'react-chartjs-2';
-
+import {useContext} from 'react';
+import {chartContext} from './chartContext';
 
 export default function LineChart (){
+  const {value,setValue} = useContext(chartContext); 
+
     const axios = require('axios').default;  
     const[coindata,setCoindata] = useState([]);
     const[time,setTime] = useState([]);
@@ -99,15 +102,19 @@ export default function LineChart (){
             console.log('24h '+dates_24h.length)
             setDates24h(dates_24h);
             setDates7d(dates_7d);
-            if(chartdates === dates_7d){
-              setChartDates(dates_7d);
-              setChartData(data7d);
+            
+            if(value.length !==0){
+              if(value.length <25){
+                  setChartDates(dates_24h);
+                  setChartData(data24h);
+              }else{
+                  setChartDates(dates_7d);
+                  setChartData(data7d);
+              }
             }else{
-              setChartDates(dates_24h);
-              setChartData(data24h);
+                  setChartDates(dates_7d);
+                  setChartData(data7d);
             }
-           
-
         }
     },[data7d])
 
@@ -119,6 +126,10 @@ export default function LineChart (){
         setChartData(data7d);
         setChartDates(dates7d);
     }
+    useEffect(()=>{
+       setValue(chartdates);
+    },[chartdates])
+
     const data = {
        labels: Object.values(chartdates),
         datasets: [

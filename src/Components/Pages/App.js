@@ -8,17 +8,23 @@ import Exchanges from "./Exchanges";
 import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
+import { chartContext } from "../chartContext";
+import {useState,useMemo} from "react";
 
 function App() {
+  const [value,setValue] = useState(null);
+  const chartValue = useMemo(() => ({value,setValue}),[value, setValue])
   return (
     <div className="App">
       <Router basename={process.env.PUBLIC_URL}>
         <Navbar />
         <BurgerMenu />
         <Switch>
+          <chartContext.Provider value={chartValue}>
           <Route exact path="/">
             <Home />
           </Route>
+          </chartContext.Provider>
           <Route path="/search">
             <Search />
           </Route>

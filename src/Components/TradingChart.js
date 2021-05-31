@@ -99,8 +99,14 @@ export default function LineChart (){
             console.log('24h '+dates_24h.length)
             setDates24h(dates_24h);
             setDates7d(dates_7d);
-            setChartDates(dates_7d);
-            setChartData(data7d);
+            if(chartdates === dates_7d){
+              setChartDates(dates_7d);
+              setChartData(data7d);
+            }else{
+              setChartDates(dates_24h);
+              setChartData(data24h);
+            }
+           
 
         }
     },[data7d])
@@ -226,7 +232,7 @@ export default function LineChart (){
     <div className="trading-chart" style={{height:"400px",width:"80vw",marginLeft:"auto",marginRight:"auto",marginTop:"50px"}}>
       <div className='header'>
         <h1 className='title' style={{fontSize:"25px", fontFamily:"sans-serif"}}>Cryptocurrency Trading Rates</h1>
-        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white',hover: 'lightgray'}} onClick={handle24h}>24h</button>
+        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle24h}>24h</button>
         <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle7d}>7d</button>
       </div>
       <Line data={data} options={options} />

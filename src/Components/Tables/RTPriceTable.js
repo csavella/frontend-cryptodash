@@ -139,6 +139,7 @@ function RTPriceTable({ columns }) {
           )}
         </ToolkitProvider>
       </div>
+      <hr></hr>
     </Container>
   );
 }

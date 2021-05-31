@@ -1,7 +1,16 @@
+import {useState} from "react";
 import RTPriceTable from "./RTPriceTable";
+import FavoriteCoins from "./FavoriteCoins";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-function RTPriceFormattedTable() {
+function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
   const columns = [
+    {
+      dataField: "favorite",
+      text: "",
+      formatter: starIconFormatter,
+    },
     {
       dataField: "rank",
       text: "Rank",
@@ -64,6 +73,36 @@ function RTPriceFormattedTable() {
     },
   ];
 
+  const [iconColor, setIconColor] = useState("black");
+
+  function handleclick(row) {
+    if (row === null) return;
+    var tempFaves = favoriteCoins;
+    tempFaves.push(row);
+    setFavoriteCoins([...tempFaves]);
+  }
+
+  function changeColor(){
+    if(iconColor === "black") {
+      setIconColor("blue");
+    } else {
+      setIconColor("black");
+    }
+    
+  }
+
+  function starIconFormatter(cell, row) {
+    if (cell === null) return <p></p>;
+    return (
+      <button className="btn favorite" onClick={() => handleclick({ row })} style={{backgroundColor: "transparent"}}>
+      <FontAwesomeIcon
+        onClick={() => changeColor()}
+        icon={faStar}
+        style={{color: {iconColor}}}
+      >{cell}</FontAwesomeIcon></button>
+    );
+  }
+
   function imgFormatter(cell, row) {
     if (cell === null) return <p></p>;
 
@@ -99,7 +138,12 @@ function RTPriceFormattedTable() {
     return <p>{parseFloat(cell.toFixed(2)).toLocaleString() + "%"}</p>;
   }
 
-  return <RTPriceTable columns={columns} />;
+  return (
+    <div>
+      <RTPriceTable columns={columns} />
+      <FavoriteCoins faves={ favoriteCoins} setFavoriteCoins={setFavoriteCoins }/>
+    </div>
+  );
 }
 
 export default RTPriceFormattedTable;

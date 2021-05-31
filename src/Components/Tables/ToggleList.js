@@ -15,7 +15,7 @@ function ToggleList({ columns, onColumnToggle, toggles }) {
           toggle: toggles[column.dataField],
         }))
         .map((column, index) =>
-          index > 0 ? (
+          index > 1 ? (
             <Form.Check
               type="switch"
               key={column.dataField}

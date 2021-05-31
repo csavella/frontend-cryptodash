@@ -37,46 +37,46 @@ export default function ExchangesTable(){
          setData(data); }
     },[exchangedata]) 
 
-         const columns = [{
-             
-             Header: 'Logo ',
-             accessor: 'logo',
-             Cell: ({ value } ) => (
-                <img
-                  src={value}
-                  alt={''}
-                />
-              ),
-              width: 65                   
-         },{
-             Header: 'Name',
-             accessor: 'name',
-            Cell:({value}) =>(
-                <div style={{textAlign: 'center'}}>
-                    {value}
-                </div>
-            )
-         },{
-             Header: 'Website',
-             accessor: 'site',
-             Cell:({value}) =>(   
-                <div style={{textAlign: 'center'}}>   
-                    <a href={value} >
-                        {value}
-                    </a>
-                </div>
-             )
-         }]
-
-        return(
-            <div>
-                <ReactTable
-                   data={data}
-                   columns={columns}
-                   showPagination={true}
-                   defaultPageSize={10}
-                />         
-            </div>
+    const columns = [{
+        
+        Header: 'Logo ',
+        accessor: 'logo',
+        Cell: ({ value } ) => (
+           <img
+             src={value}
+             alt={''}
+           />
+         ),
+         width: 65                   
+    },{
+        Header: 'Name',
+        accessor: 'name',
+        Cell:({value}) =>(
+           <div style={{textAlign: 'center'}}>
+               {value}
+           </div>
         )
+    },{
+        Header: 'Website',
+        accessor: 'site',
+        Cell:({value}) =>(   
+           <div style={{textAlign: 'center'}}>   
+               <a href={value} >
+                   {value}
+               </a>
+           </div>
+        )
+    }]
+
+    return(
+        <div>
+            <ReactTable
+               data={data}
+               columns={columns}
+               showPagination={true}
+               defaultPageSize={10}
+            />         
+        </div>
+    )
     
 }

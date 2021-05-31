@@ -9,12 +9,14 @@ import Exchanges from "./Exchanges";
 import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
+import { chartContext } from "../chartContext";
 import Glossary from "../Glossary/Glossary";
 import {pairContext} from "../CryptoPair/pairContext";
-// import React, {useState,useMemo} from "react";
 import Contact from "./Contact";
 
 function App() {
+  const [value,setValue] = useState(null);
+  const chartValue = useMemo(() => ({value,setValue}),[value, setValue])
   const[pair,setPair] = useState(null);
   const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
   const [favoriteCoins, setFavoriteCoins] = useState([]);
@@ -25,14 +27,16 @@ function App() {
         <Navbar />
         <BurgerMenu />
         <Switch>
-          <pairContext.Provider value={pairTableValue}>
           <Route exact path="/">
-            <Home
-              favoriteCoins={favoriteCoins}
-              setFavoriteCoins={setFavoriteCoins}
-            />
-          </Route>
-          </pairContext.Provider>
+            <pairContext.Provider value={pairTableValue}>
+              <chartContext.Provider value={chartValue}>
+                <Home
+                  favoriteCoins={favoriteCoins}
+                  setFavoriteCoins={setFavoriteCoins}
+                />
+              </chartContext.Provider>
+            </pairContext.Provider>
+          </Route>         
           <Route path="/search">
             <Search />
           </Route>

@@ -32,10 +32,7 @@ export default function PairTable(){
     const supported_currencies_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
   
     useEffect(() => {
-        console.log('len1: '+ selectCoinsList.length)
-        if(selectCoinsList.length === 0)
-           getApi()
-           console.log('len: '+ selectCoinsList.length)
+        getApi()
     },[])
 
     async function getApi(){
@@ -148,7 +145,7 @@ export default function PairTable(){
         }
     }
     /*Creates pair data for initial table */
-    useEffect(() =>{        
+    useEffect(() =>{
         buildTable(pairdata1,pairdata2,pairdata3);  
     },[pairdata1,pairdata2,pairdata3])
 
@@ -202,7 +199,7 @@ export default function PairTable(){
         setPopupBox('false');
     }
 
-    function handleClose(e){    
+    function handleClose(e){  
         setPopupBox('false'); 
         e.preventDefault();
     }

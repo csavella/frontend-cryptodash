@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Line } from 'react-chartjs-2';
-
+import {useContext} from 'react';
+import {chartContext} from './chartContext';
 
 export default function LineChart (){
+  const {value,setValue} = useContext(chartContext); 
+
     const axios = require('axios').default;  
     const[coindata,setCoindata] = useState([]);
     const[time,setTime] = useState([]);
@@ -20,7 +23,7 @@ export default function LineChart (){
         getCoinData();
         const timer = setTimeout(() =>{
             setTime(time +1);
-        },600000);
+        },60000);
         return () => clearTimeout(timer);
     },[time]);
     
@@ -54,26 +57,29 @@ export default function LineChart (){
         let date = new Date();
         date.setDate(date.getDate() - day);
         let split_date = date.toString().split(" ");
-        let split_time = split_date[4].toString().split(':');
-        let min_sec = split_time[1] + ':' + split_time[2];  
+        let split_time = split_date[4].toString().split(':'); 
 
         if(newdate.length === 0)
             hour = split_time[0];    
         
-        let new_time = hour + ':' + min_sec;
+        let new_time = hour + ':' + split_time[1];
         newdate = split_date[1] + ' ' + split_date[2] + ' ('+ new_time + ')';
+
         hour++;
         if(hour === 24){
             hour = '00';
             day--;
         }
+        if(hour < 10 && hour !== '00'){
+          hour = '0'+hour;
+        }       
         return {hour,day,newdate};
     }
 
     useEffect(()=>{
         let dates_7d =[''];
         let dates_24h = [''];
-
+    
         if(data7d.length !== 0){
             let date = {
                 hour:0,
@@ -84,20 +90,31 @@ export default function LineChart (){
             let length;
             if(Object.values(data7d)[0])
                 length = (Object.values(data7d)[0].length);
-            
-            date = getFormattedDate(date.hour,date.day,date.newdate);
-
-            for(let i = 0; i < length; i++){
-                date = getFormattedDate(date.hour,date.day,date.newdate);
-                dates_7d.push(date.newdate);
+        
+            date = getFormattedDate(date.hour,date.day,date.newdate);            
+            for(let i = 0; i <length; i++){
+                date = getFormattedDate(date.hour,date.day,date.newdate);            
+                dates_7d.push(date.newdate);               
             }
-            dates_24h = dates_7d.slice(length-23);
-           
+             
+            dates_7d = dates_7d.slice(length - 160);               
+            dates_24h = dates_7d.slice(length-31);
+            console.log('24h '+dates_24h.length)
             setDates24h(dates_24h);
             setDates7d(dates_7d);
-            setChartDates(dates_7d);
-            setChartData(data7d);
-
+            
+            if(value.length !==0){
+              if(value.length <25){
+                  setChartDates(dates_24h);
+                  setChartData(data24h);
+              }else{
+                  setChartDates(dates_7d);
+                  setChartData(data7d);
+              }
+            }else{
+                  setChartDates(dates_7d);
+                  setChartData(data7d);
+            }
         }
     },[data7d])
 
@@ -109,31 +126,39 @@ export default function LineChart (){
         setChartData(data7d);
         setChartDates(dates7d);
     }
+    useEffect(()=>{
+       setValue(chartdates);
+    },[chartdates])
+
     const data = {
-        labels: Object.values(chartdates),
+       labels: Object.values(chartdates),
         datasets: [
           {
-            label: (Object.keys(chartdata)[0]),
+            yAxisID: 'A',
+            label: (Object.keys(chartdata)[0]),          
             data: (Object.values(chartdata)[0]),
             fill: false,
-            backgroundColor: 'rgb(242, 169, 0)', 
+            backgroundColor: 'rgb(250, 169, 0)',
             borderColor: 'rgba(77, 77, 78,0.2)',
           },
           {
-            label: (Object.keys(chartdata)[1]),
+            yAxisID: 'B',
+            label: (Object.keys(chartdata)[1]),            
             data: (Object.values(chartdata)[1]),
             fill: false,
-            backgroundColor: 'rgb(60, 60, 61)',
+            backgroundColor: 'rgb(55, 54, 123)',
             borderColor: 'rgba(201, 157, 102,0.2)',
           },
           {
-            label: (Object.keys(chartdata)[4]),
+            yAxisID: 'C',
+            label: (Object.keys(chartdata)[4]),            
             data: (Object.values(chartdata)[4]),
             fill: false,
-            backgroundColor: 'rgb(243, 186, 47)',
+            backgroundColor: 'rgb(193, 9, 97)',
             borderColor: 'rgba(48, 55, 54,0.2)',
           },
           {
+            yAxisID: 'D',
             label: (Object.keys(chartdata)[3]),
             data: (Object.values(chartdata)[3]),
             fill: false,
@@ -141,6 +166,7 @@ export default function LineChart (){
             borderColor: 'rgba(0,0,0,0.2)',
           },
           {
+            yAxisID: 'E',
             label: (Object.keys(chartdata)[2]),
             data: (Object.values(chartdata)[2]),
             fill: false,
@@ -151,22 +177,74 @@ export default function LineChart (){
       };
       
   const options = {
-    maintainAspectRatio: false,
     responsive: true,
     scales: {
+      x:{
+        type: 'category',     
+        ticks:{
+            autoSkip:true,   
+            callback:function(value, index){
+                let date = this.getLabelForValue(value);
+                let date_2 = this.getLabelForValue(value-4);
+                let date2 = date_2.toString().split(' ')[1];
+                let date1 = date.split(' ')[1];
+
+                if( index%4 === 0 &&  date1 !== date2 ){
+                  return date;
+                }else if(index === 0 || index === 167|| index === 23){
+                  return date;
+                }
+                else{
+                  return date.split(' ')[2];
+                }
+            }                         
+        }
+      },
       yAxes: [{
+          type: 'logarithmic',
           ticks: {
-            beginAtZero: true,
-          },          
-      }],
-    },
+            id: 'A',
+            min: 0.5,
+            max: 50000,        
+          }                   
+    },{
+      type: 'logarithmic',
+      ticks: {
+        id: 'B',
+        min:0.5,
+        max: 5000,     
+      }
+    },{
+        type: 'logarithmic',
+        ticks: {
+          id: 'C',
+          min:0.5,
+          max: 1000,        
+        }
+      }, {
+          type: 'logarithmic',
+          ticks: {
+            id: 'D',
+            min:0.5,
+            max: 500,          
+          }
+        },{
+          type: 'logarithmic',
+          ticks: {
+            id: 'E',
+            min:0,
+            max: 50,   
+          } 
+       }
+    ]}
   };
+
   return(
-    <div className="trading-chart" style={{height:"400px",width:"700px",marginLeft:"60px",marginTop:"50px"}}>
+    <div className="trading-chart" style={{height:"400px",width:"80vw",marginLeft:"auto",marginRight:"auto",marginTop:"50px"}}>
       <div className='header'>
         <h1 className='title' style={{fontSize:"25px", fontFamily:"sans-serif"}}>Cryptocurrency Trading Rates</h1>
-        <button onClick={handle24h}>24h</button>
-        <button onClick={handle7d}>7d</button>
+        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle24h}>24h</button>
+        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle7d}>7d</button>
       </div>
       <Line data={data} options={options} />
     </div>

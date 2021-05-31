@@ -40,7 +40,7 @@ const Resources = () => {
           </a>
           : Blockchain, cryptocurrency, bitcoin
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>Mining Estimation Tools</h3>
       <ul>
@@ -71,7 +71,7 @@ const Resources = () => {
           </a>
           : Estimate difficulty of mining and possible profitability
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>Blockchain Development</h3>
       <ul>
@@ -121,7 +121,7 @@ const Resources = () => {
           </a>
           : Create solidity contracts. Increased IDE functionality
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>Wallets</h3>
       <ul>
@@ -169,7 +169,7 @@ const Resources = () => {
           : Software wallet. Includes more than 10,000 tokens and 40 well-known
           blockchains
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>YouTube Channels and Podcasts</h3>
       <ul>
@@ -234,7 +234,7 @@ const Resources = () => {
           </a>
           : Content on Blockchain and Cryptocurrency community
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>Books and Courses</h3>
       <ul>
@@ -337,19 +337,36 @@ const Resources = () => {
           : Detailed courses on Bitcoin basics. Financial system, scams, hacks,
           etc.
         </li>
-      </ul>
+      </ul><br></br>
 
       <h3>Forums</h3>
       <ul>
         <li>
           <a
             className="resource-link"
-            href="https://www.youtube.com/channel/UCqK_GSMbpiV8spgD3ZGloSw"
+            href="https://emerging.technology/"
           >
-            Coin Bureau
+            Emerging Technology
           </a>
-          : YouTube channel that provides educational videos for cryptocurrency
-          newbies
+          : Discussions about earning money with Crypto, Blockchain, AI, VR, 3D Printing, Drones, etc.
+        </li>
+        <li>
+          <a
+            className="resource-link"
+            href="https://cryptorum.com/"
+          >
+            Cryptorum
+          </a>
+          : Around 70 threads available. Educational forum on cryptocurrency
+        </li>
+        <li>
+          <a
+            className="resource-link"
+            href="https://steemit.com/"
+          >
+            Steemit
+          </a>
+          : The first global social network in the cryptocurrency sector
         </li>
       </ul>
     </Container>

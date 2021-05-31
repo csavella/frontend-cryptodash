@@ -1,19 +1,20 @@
 import PairTable from '../CryptoPair/PairTable';
+// import TradingChart from './TradingChart';
 import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
 import TradingChart from "../TradingChart";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Home = () => {
+const Home = ({ favoriteCoins, setFavoriteCoins }) => {
   return (
-      <div>
-          <RTPriceFormattedTable />
-          <PairTable />
-          <TradingChart />
-          
-      </div>
-  
-    );
-
+    <div>
+      <RTPriceFormattedTable
+        favoriteCoins={favoriteCoins}
+        setFavoriteCoins={setFavoriteCoins}
+      />
+      <PairTable />
+      <TradingChart />
+    </div>
+  );
 };
 
 export default Home;

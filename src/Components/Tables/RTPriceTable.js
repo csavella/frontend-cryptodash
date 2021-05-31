@@ -51,6 +51,7 @@ function RTPriceTable({ columns }) {
         valuation: coins[i].fully_diluted_valuation,
         supply:
           coins[i].circulating_supply + " " + coins[i].symbol.toUpperCase(),
+        id: coins[i].id,
       };
       coinData.push(tempObject);
     }
@@ -138,6 +139,7 @@ function RTPriceTable({ columns }) {
           )}
         </ToolkitProvider>
       </div>
+      <hr></hr>
     </Container>
   );
 }

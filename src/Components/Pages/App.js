@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import Navbar from "../Navigation/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -11,10 +12,13 @@ import ScrollToTop from "../Navigation/ScrollToTop";
 import Glossary from "../Glossary/Glossary";
 import {pairContext} from "../CryptoPair/pairContext";
 import React, {useState,useMemo} from "react";
+import Contact from "./Contact";
 
 function App() {
   const[pair,setPair] = useState(null);
   const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
+  const [favoriteCoins, setFavoriteCoins] = useState([]);
+
   return (
     <div className="App">
       <Router basename={process.env.PUBLIC_URL}>
@@ -23,7 +27,10 @@ function App() {
         <Switch>
           <pairContext.Provider value={pairTableValue}>
           <Route exact path="/">
-            <Home />
+            <Home
+              favoriteCoins={favoriteCoins}
+              setFavoriteCoins={setFavoriteCoins}
+            />
           </Route>
           </pairContext.Provider>
           <Route path="/search">
@@ -41,9 +48,11 @@ function App() {
           <Route path="/resources">
             <Resources />
           </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
         </Switch>
       </Router>
-      <div className="content"></div>
       <ScrollToTop />
     </div>
   );

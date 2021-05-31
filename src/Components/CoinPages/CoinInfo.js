@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 import CoinInfoHeader from './CoinInfoComponents/CoinInfoHeader';
 import TradingViewGraph from './CoinInfoComponents/TradingViewGraph';
@@ -8,6 +8,15 @@ import TradeableExchanges from './CoinInfoComponents/TradeableExchanges';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'react-bootstrap';
 import './CoinInfo.css';
+
+const PageNotFound = () =>{
+    return (
+        <div className="page-not-found">
+            <h1>Page Not Found</h1>
+            <p>Sorry, there is nothing to see here.</p>
+            <p><Link to="/">Back to Home</Link></p>
+        </div> )
+}
 
 const CoinInfo = (props) =>{
     const {id} = useParams();
@@ -41,15 +50,27 @@ const CoinInfo = (props) =>{
         .split("https://www.coingecko.com/en/coins/")
         .join("/frontend-cryptodash/search/")
         .split("/coins/")
-        .join("/frontend-cryptodash/search/");
+        .join("/frontend-cryptodash/search/")
+        .split('">')
+        .join('" target="_blank" rel="noopener noreferrer">');
+        /* target="_blank" rel="noopener noreferrer" */
 
         return ReactHtmlParser(descriptionEl);
+    }
+
+    const nameUndefined = () => {
+        if(basicInfo === undefined){
+            return true
+        }
+        return false;
     }
     
     /* use flex, divide into at least 3 different divs*/
     return (
         <div>
-            <Card>
+        {nameUndefined() ? <PageNotFound /> : 
+           <div> 
+            <Card className="coin-info-card">
                 <Card.Header className="result-header">
                     <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
                 </Card.Header> 
@@ -57,7 +78,7 @@ const CoinInfo = (props) =>{
                     <TradingViewGraph symbol={basicInfo.symbol} />
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Market Data</h1> 
                 </Card.Header>
@@ -65,7 +86,7 @@ const CoinInfo = (props) =>{
                     <MarketInfo data={basicInfo}/>
                 </Card.Body> 
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Description</h1>
                 </Card.Header>
@@ -75,7 +96,7 @@ const CoinInfo = (props) =>{
                     </div>
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="coin-info-card">
                 <Card.Header>
                     <h1>Exchanges</h1>
                 </Card.Header>
@@ -83,6 +104,8 @@ const CoinInfo = (props) =>{
                     <TradeableExchanges id={id} />
                 </Card.Body>
             </Card>
+            </div>
+        }
         </div>
     );
 }

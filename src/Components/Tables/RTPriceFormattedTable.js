@@ -26,6 +26,7 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
       dataField: "name",
       text: "Name",
       sort: true,
+      formatter: nameFormatter,
     },
     {
       dataField: "price",
@@ -113,6 +114,13 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
         style={({ height: 2 + "em" }, { width: 2 + "em" })}
       />
     );
+  }
+  // Eric added in for navigating to results pages
+  function nameFormatter(cell, row){
+    if(cell === null) return <p></p>;
+    return (
+      <a href={"/frontend-cryptodash/search/" + row.id} className="anchor-name-item">{cell}</a>
+    )
   }
 
   function priceFormatter(cell, row) {

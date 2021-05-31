@@ -1,3 +1,4 @@
+import PairTable from '../CryptoPair/PairTable';
 // import TradingChart from './TradingChart';
 import RTPriceFormattedTable from "../Tables/RTPriceFormattedTable";
 import TradingChart from "../TradingChart";
@@ -10,6 +11,7 @@ const Home = ({ favoriteCoins, setFavoriteCoins }) => {
         favoriteCoins={favoriteCoins}
         setFavoriteCoins={setFavoriteCoins}
       />
+      <PairTable />
       <TradingChart />
     </div>
   );

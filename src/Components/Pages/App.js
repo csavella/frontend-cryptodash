@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 import Navbar from "../Navigation/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -10,9 +10,13 @@ import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import Glossary from "../Glossary/Glossary";
+import {pairContext} from "../CryptoPair/pairContext";
+// import React, {useState,useMemo} from "react";
 import Contact from "./Contact";
 
 function App() {
+  const[pair,setPair] = useState(null);
+  const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
   const [favoriteCoins, setFavoriteCoins] = useState([]);
 
   return (
@@ -21,12 +25,14 @@ function App() {
         <Navbar />
         <BurgerMenu />
         <Switch>
+          <pairContext.Provider value={pairTableValue}>
           <Route exact path="/">
             <Home
               favoriteCoins={favoriteCoins}
               setFavoriteCoins={setFavoriteCoins}
             />
           </Route>
+          </pairContext.Provider>
           <Route path="/search">
             <Search />
           </Route>

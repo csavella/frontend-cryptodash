@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState,useMemo } from "react";
 import Navbar from "../Navigation/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -9,27 +10,42 @@ import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import { chartContext } from "../chartContext";
-import {useState,useMemo} from "react";
+import Glossary from "../Glossary/Glossary";
+import {pairContext} from "../CryptoPair/pairContext";
+import Contact from "./Contact";
 
 function App() {
   const [value,setValue] = useState(null);
   const chartValue = useMemo(() => ({value,setValue}),[value, setValue])
+  const[pair,setPair] = useState(null);
+  const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
+  const [favoriteCoins, setFavoriteCoins] = useState([]);
+
   return (
     <div className="App">
       <Router basename={process.env.PUBLIC_URL}>
         <Navbar />
         <BurgerMenu />
         <Switch>
-          <chartContext.Provider value={chartValue}>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          </chartContext.Provider>
+          
+          <pairContext.Provider value={pairTableValue}>
+            <chartContext.Provider value={chartValue}>
+               <Route exact path="/">
+                 <Home
+                   favoriteCoins={favoriteCoins}
+                   setFavoriteCoins={setFavoriteCoins}
+                 />
+               </Route>
+            </chartContext.Provider>
+          </pairContext.Provider>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/exchanges">
             <Exchanges />
+          </Route>
+          <Route path="/glossary">
+            <Glossary />
           </Route>
           <Route path="/about">
             <About />
@@ -37,9 +53,11 @@ function App() {
           <Route path="/resources">
             <Resources />
           </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
         </Switch>
       </Router>
-      <div className="content"></div>
       <ScrollToTop />
     </div>
   );

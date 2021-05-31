@@ -30,3 +30,8 @@
 .starBlue {
   color: blue;
 }
+
+.anchor-name-item {
+  color: black;
+  text-decoration: none;
+}

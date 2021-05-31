@@ -7,3 +7,7 @@
 .resource-link:hover, .resource-link:active {
     color: darkslategray;
 }
+
+.resources-page {
+    margin: 2em;
+}

@@ -3,7 +3,7 @@ import "./Resources.css";
 
 const Resources = () => {
   return (
-    <Container className="resources-page" style={{ margin: 2 + "em" }}>
+    <Container className="resources-page">
       <h2 style={{ textAlign: "center", margin: 2 + "em" }}>
         Cryptocurrency Resources
       </h2>

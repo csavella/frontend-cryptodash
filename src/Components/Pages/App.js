@@ -9,17 +9,23 @@ import About from "./About";
 import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import Glossary from "../Glossary/Glossary";
+import {pairContext} from "../CryptoPair/pairContext";
+import React, {useState,useMemo} from "react";
 
 function App() {
+  const[pair,setPair] = useState(null);
+  const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
   return (
     <div className="App">
       <Router basename={process.env.PUBLIC_URL}>
         <Navbar />
         <BurgerMenu />
         <Switch>
+          <pairContext.Provider value={pairTableValue}>
           <Route exact path="/">
             <Home />
           </Route>
+          </pairContext.Provider>
           <Route path="/search">
             <Search />
           </Route>

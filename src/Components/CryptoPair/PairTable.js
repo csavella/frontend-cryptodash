@@ -1,12 +1,15 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,useContext} from 'react';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import CompareCoinsPopup from './CompareCoinsPopup';
 import './PairTable.css';
+import {pairContext} from './pairContext';
 
 export default function PairTable(){
+    const{pair,setPair} = useContext(pairContext);
+
     const axios = require('axios').default;
 
     const[selectCoinsList,setSelectCoinsList] = useState([]);// data from coins/markets
@@ -145,16 +148,20 @@ export default function PairTable(){
         }
     }
     /*Creates pair data for initial table */
-    useEffect(() =>{
+    useEffect(() =>{        
         buildTable(pairdata1,pairdata2,pairdata3);  
     },[pairdata1,pairdata2,pairdata3])
 
   /* Creates initial table */
-    useEffect(() => {      
-        if(selectCoinsList.length !== 0 && selectVsCurrencies.length !== 0){
-            getPairData(selectVsCurrencies[0],selectCoinsList[1].id,setPairData1);
-            getPairData(selectVsCurrencies[1],selectCoinsList[2].id,setPairData2);
-            getPairData(selectVsCurrencies[2],selectCoinsList[3].id,setPairData3);    
+    useEffect(() => {   
+        if(pair){
+            setTableData(pair);
+        }else{ 
+            if(selectCoinsList.length !== 0 && selectVsCurrencies.length !== 0){
+                getPairData(selectVsCurrencies[0],selectCoinsList[1].id,setPairData1);
+                getPairData(selectVsCurrencies[1],selectCoinsList[2].id,setPairData2);
+                getPairData(selectVsCurrencies[2],selectCoinsList[3].id,setPairData3);    
+            }
         }
     },[selectVsCurrencies,selectCoinsList])
  
@@ -190,6 +197,7 @@ export default function PairTable(){
              data[1] = data[0];
              data[0] = popupData[0];
              setTableData(Object.values(data));
+             setPair(Object.values(data));
         }
         setPopupBox('false');
     }

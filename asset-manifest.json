@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/frontend-cryptodash/static/css/main.7ff703ba.chunk.css",
-    "main.js": "/frontend-cryptodash/static/js/main.db00bb64.chunk.js",
-    "main.js.map": "/frontend-cryptodash/static/js/main.db00bb64.chunk.js.map",
-    "runtime-main.js": "/frontend-cryptodash/static/js/runtime-main.d29ca4b4.js",
-    "runtime-main.js.map": "/frontend-cryptodash/static/js/runtime-main.d29ca4b4.js.map",
+    "main.js": "/frontend-cryptodash/static/js/main.6775e708.chunk.js",
+    "main.js.map": "/frontend-cryptodash/static/js/main.6775e708.chunk.js.map",
+    "runtime-main.js": "/frontend-cryptodash/static/js/runtime-main.1479ddac.js",
+    "runtime-main.js.map": "/frontend-cryptodash/static/js/runtime-main.1479ddac.js.map",
     "static/css/2.274d7a3f.chunk.css": "/frontend-cryptodash/static/css/2.274d7a3f.chunk.css",
-    "static/js/2.ce26fc7e.chunk.js": "/frontend-cryptodash/static/js/2.ce26fc7e.chunk.js",
-    "static/js/2.ce26fc7e.chunk.js.map": "/frontend-cryptodash/static/js/2.ce26fc7e.chunk.js.map",
-    "static/js/3.a378bc2d.chunk.js": "/frontend-cryptodash/static/js/3.a378bc2d.chunk.js",
-    "static/js/3.a378bc2d.chunk.js.map": "/frontend-cryptodash/static/js/3.a378bc2d.chunk.js.map",
+    "static/js/2.f8d6f5cf.chunk.js": "/frontend-cryptodash/static/js/2.f8d6f5cf.chunk.js",
+    "static/js/2.f8d6f5cf.chunk.js.map": "/frontend-cryptodash/static/js/2.f8d6f5cf.chunk.js.map",
+    "static/js/3.a39eada7.chunk.js": "/frontend-cryptodash/static/js/3.a39eada7.chunk.js",
+    "static/js/3.a39eada7.chunk.js.map": "/frontend-cryptodash/static/js/3.a39eada7.chunk.js.map",
     "index.html": "/frontend-cryptodash/index.html",
     "static/css/2.274d7a3f.chunk.css.map": "/frontend-cryptodash/static/css/2.274d7a3f.chunk.css.map",
     "static/css/main.7ff703ba.chunk.css.map": "/frontend-cryptodash/static/css/main.7ff703ba.chunk.css.map",
-    "static/js/2.ce26fc7e.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.ce26fc7e.chunk.js.LICENSE.txt"
+    "static/js/2.f8d6f5cf.chunk.js.LICENSE.txt": "/frontend-cryptodash/static/js/2.f8d6f5cf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d29ca4b4.js",
+    "static/js/runtime-main.1479ddac.js",
     "static/css/2.274d7a3f.chunk.css",
-    "static/js/2.ce26fc7e.chunk.js",
+    "static/js/2.f8d6f5cf.chunk.js",
     "static/css/main.7ff703ba.chunk.css",
-    "static/js/main.db00bb64.chunk.js"
+    "static/js/main.6775e708.chunk.js"
   ]
 }

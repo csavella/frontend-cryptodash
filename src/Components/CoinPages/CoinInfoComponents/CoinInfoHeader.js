@@ -13,6 +13,10 @@ const CoinInfoHeader = ({_id, _name, _img}) =>{
         })
         .catch(error => console.log(error + ": Cannot get realtime price"));
     }, [_id, _name, realTimePrice]);
+
+    const priceFormat = () =>{
+        return realTimePrice % 2 === 0 ? realTimePrice.toLocaleString() : realTimePrice;
+    }
   
     return (
         <div className="result-header-container" key={_id}>
@@ -21,7 +25,7 @@ const CoinInfoHeader = ({_id, _name, _img}) =>{
                 <span >{_name}</span>
             </div>
             <div className="price-percent-container">
-                <span >{"$" + realTimePrice}</span> 
+                <span >{"$" + priceFormat()}</span> 
             </div>
         </div>
     )

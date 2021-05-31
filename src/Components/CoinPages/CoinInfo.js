@@ -46,7 +46,6 @@ const CoinInfo = (props) =>{
     }
 
     const parseDescription = () =>{
-        console.log(description);
         const descriptionEl = description
         .split("https://www.coingecko.com/en/coins/")
         .join("/frontend-cryptodash/search/")
@@ -109,46 +108,6 @@ const CoinInfo = (props) =>{
         }
         </div>
     );
-    /*
-    return (
-        <div>
-            <Card>
-                <Card.Header className="result-header">
-                    <CoinInfoHeader _id={id} _name={basicInfo.name} _img={basicInfo.image}/>
-                </Card.Header> 
-                <Card.Body>
-                    <TradingViewGraph symbol={basicInfo.symbol} />
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Header>
-                    <h1>Market Data</h1> 
-                </Card.Header>
-                <Card.Body>
-                    <MarketInfo data={basicInfo}/>
-                </Card.Body> 
-            </Card>
-            <Card>
-                <Card.Header>
-                    <h1>Description</h1>
-                </Card.Header>
-                <Card.Body>
-                    <div className="description-box">
-                        {checkDescription() ? <div>{parseDescription()}</div> : null}
-                    </div>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Header>
-                    <h1>Exchanges</h1>
-                </Card.Header>
-                <Card.Body>
-                    <TradeableExchanges id={id} />
-                </Card.Body>
-            </Card>
-        </div>
-    );
-    */
 }
 
 

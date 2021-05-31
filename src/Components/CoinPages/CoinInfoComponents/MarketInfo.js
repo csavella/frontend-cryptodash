@@ -20,7 +20,6 @@ const MarketInfo = (props) =>{
         <div className="market-data-container">
             <div className="data-container">
                 {marketData && Object.keys(marketData).slice(5, 24).map((key, index) =>{
-                    console.log(key + ": " + marketData[key]);
                     // Will be the name of the market data item
                     let percentIndicator = false;
                     let dateIndicator = false;

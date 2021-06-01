@@ -63,15 +63,6 @@ export default function PairTable() {
     }
   }
 
-//   useEffect(() => {
-//     if (pairdata1 && pairdata2 && pairdata3)
-//       buildTable(pairdata1, pairdata2, pairdata3);
-//     const timer = setTimeout(() => {
-//       setTime(time + 1);
-//     }, 60000);
-//     return () => clearTimeout(timer);
-//   }, [time]);
-
     function updateTable(pairdata,setPairData){
         let key1 = Object.keys(pairdata);       
         let data1 = pairdata[key1];
@@ -82,8 +73,8 @@ export default function PairTable() {
     useEffect(() => {       
         if(pairdata1 && pairdata2 && pairdata3){
             updateTable(pairdata1,setPairData1);
-            updateTable(pairdata1,setPairData1);
-            updateTable(pairdata1,setPairData1);           
+            updateTable(pairdata2,setPairData2);
+            updateTable(pairdata3,setPairData3);           
         }
         const timer = setTimeout(() =>{
             setTime(time +1);
@@ -110,57 +101,31 @@ export default function PairTable() {
     let uppercase_key = key[0].toUpperCase();
     key[0] = key[0].toLowerCase();
 
-        let time = data.market_data.last_updated.split('T');
-        time = time[1].split('.');
-        time = time[0].split(':');
-        let UTC_to_PST = (parseInt(time[0]) - 7 ) +':' + time[1] + ':' + time[2];
-        if(parseInt(time[0]) - 7 === 24)
-           UTC_to_PST = '00:' + time[1] + ':'+ time[2];
-        if(parseInt(time[0]) - 7 < 0){
-            let num = 24 + (parseInt(time[0] - 7));
-            UTC_to_PST = num+':'+time[1] + ':'+time[2];
+    let time = data.market_data.last_updated.split('T');
+    time = time[1].split('.');
+    time = time[0].split(':');
+    let UTC_to_PST = (parseInt(time[0]) - 7 ) +':' + time[1] + ':' + time[2];
+    if(parseInt(time[0]) - 7 === 24)
+       UTC_to_PST = '00:' + time[1] + ':'+ time[2];
+    if(parseInt(time[0]) - 7 < 0){
+        let num = 24 + (parseInt(time[0] - 7));
+        UTC_to_PST = num+':'+time[1] + ':'+time[2];
+    }   
+    data.tickers.forEach(element => {
+        if(element.target === uppercase_key){
+            market = element.market.name;
         }
-
-        data.tickers.forEach(element => {
-            if(element.target === uppercase_key){
-                market = element.market.name;
-            }
-        })
-
-        return {
-            name: data.symbol.toUpperCase()+'/'+ uppercase_key,
-            exchange: market,
-            last: data.market_data.current_price[key],
-            high: data.market_data.high_24h[key],
-            low: data.market_data.low_24h[key],
-            change: data.market_data.price_change_percentage_24h_in_currency[key]+'%',
-            volume: data.market_data.total_volume[key],
-            time: UTC_to_PST
-        } 
-    // let time = data.market_data.last_updated.split("T");
-    // time = time[1].split(".");
-    // time = time[0].split(":");
-    // let UTC_to_PST = parseInt(time[0]) - 7 + ":" + time[1] + ":" + time[2];
-    // if (parseInt(time[0]) - 7 === 24)
-    //   UTC_to_PST = "00:" + time[1] + ":" + time[2];
-
-    // data.tickers.forEach((element) => {
-    //   if (element.target === uppercase_key) {
-    //     market = element.market.name;
-    //   }
-    // });
-
-    // return {
-    //   name: data.symbol.toUpperCase() + "/" + uppercase_key,
-    //   exchange: market,
-    //   last: data.market_data.current_price[key],
-    //   high: data.market_data.high_24h[key],
-    //   low: data.market_data.low_24h[key],
-    //   change:
-    //     data.market_data.price_change_percentage_24h_in_currency[key] + "%",
-    //   volume: data.market_data.total_volume[key],
-    //   time: UTC_to_PST, //time
-    // };
+    })  
+    return {
+        name: data.symbol.toUpperCase()+'/'+ uppercase_key,
+        exchange: market,
+        last: data.market_data.current_price[key],
+        high: data.market_data.high_24h[key],
+        low: data.market_data.low_24h[key],
+        change: data.market_data.price_change_percentage_24h_in_currency[key]+'%',
+        volume: data.market_data.total_volume[key],
+        time: UTC_to_PST
+    } 
   }
   /*Creates pair data for pop up box*/
   useEffect(() => {
@@ -208,19 +173,6 @@ export default function PairTable() {
       }
     }
   }, [selectVsCurrencies, selectCoinsList]);
-
-    // function handleAddToTable(e){
-    //     e.preventDefault();   
-    //     if(tabledata[0].name !== popupData[0].name){
-    //          let data = tabledata;
-    //          data[2] = data[1];
-    //          data[1] = data[0];
-    //          data[0] = popupData[0];
-    //          setTableData(Object.values(data));
-    //          setPair(Object.values(data));
-    //          setPairData3(pairdata2);
-    //          setPairData2(pairdata1);
-    //          setPairData1(pairdata);
 
   function handleCompare(e) {
     e.preventDefault();

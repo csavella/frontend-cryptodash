@@ -99,7 +99,7 @@ export default function LineChart (){
              
             dates_7d = dates_7d.slice(length - 160);               
             dates_24h = dates_7d.slice(length-31);
-            console.log('24h '+dates_24h.length)
+            // console.log('24h '+dates_24h.length)
             setDates24h(dates_24h);
             setDates7d(dates_7d);
             

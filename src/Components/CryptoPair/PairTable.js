@@ -59,9 +59,20 @@ export default function PairTable(){
         }
     }
 
+    function updateTable(pairdata,setPairData){
+        let key1 = Object.keys(pairdata);       
+        let data1 = pairdata[key1];
+        let key = key1.toString().toLowerCase();
+        getPairData(key,data1.id,setPairData);
+    }
+
     useEffect(() => {
-        if(pairdata1 && pairdata2 && pairdata3)
-            buildTable(pairdata1,pairdata2,pairdata3); 
+        
+        if(pairdata1 && pairdata2 && pairdata3){
+            updateTable(pairdata1,setPairData1);
+            updateTable(pairdata1,setPairData1);
+            updateTable(pairdata1,setPairData1);           
+        }
         const timer = setTimeout(() =>{
             setTime(time +1);
         },60000);
@@ -98,8 +109,8 @@ export default function PairTable(){
         if(parseInt(time[0]) - 7 === 24)
            UTC_to_PST = '00:' + time[1] + ':'+ time[2];
         if(parseInt(time[0]) - 7 < 0){
-            let num = 24 + (parseInt(time[0] - 7));//*(-1));
-            UTC_to_PST =  num+':'+time[1] + ':'+time[2];
+            let num = 24 + (parseInt(time[0] - 7));
+            UTC_to_PST = num+':'+time[1] + ':'+time[2];
         }
 
         data.tickers.forEach(element => {
@@ -199,6 +210,9 @@ export default function PairTable(){
              data[0] = popupData[0];
              setTableData(Object.values(data));
              setPair(Object.values(data));
+             setPairData3(pairdata2);
+             setPairData2(pairdata1);
+             setPairData1(pairdata);
         }
         setPopupBox('false');
     }

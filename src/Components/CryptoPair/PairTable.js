@@ -73,12 +73,12 @@ export default function PairTable() {
     useEffect(() => {       
         if(pairdata1 && pairdata2 && pairdata3){
             updateTable(pairdata1,setPairData1);
-            updateTable(pairdata1,setPairData1);
-            updateTable(pairdata1,setPairData1);           
+            updateTable(pairdata2,setPairData2);
+            updateTable(pairdata3,setPairData3);           
         }
         const timer = setTimeout(() =>{
             setTime(time +1);
-        },60000);
+        },90000);
         return () => clearTimeout(timer);
     },[time]);
 
@@ -173,19 +173,6 @@ export default function PairTable() {
       }
     }
   }, [selectVsCurrencies, selectCoinsList]);
-
-    // function handleAddToTable(e){
-    //     e.preventDefault();   
-    //     if(tabledata[0].name !== popupData[0].name){
-    //          let data = tabledata;
-    //          data[2] = data[1];
-    //          data[1] = data[0];
-    //          data[0] = popupData[0];
-    //          setTableData(Object.values(data));
-    //          setPair(Object.values(data));
-    //          setPairData3(pairdata2);
-    //          setPairData2(pairdata1);
-    //          setPairData1(pairdata);
 
   function handleCompare(e) {
     e.preventDefault();

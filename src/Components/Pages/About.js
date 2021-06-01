@@ -3,7 +3,10 @@ import "./About.css";
 
 const About = () => {
   return (
-    <Container className="justify-content-center about-page" style={{margin:"auto"}}>
+    <Container
+      className="justify-content-center about-page"
+      style={{ margin: "auto" }}
+    >
       <h2 style={{ textAlign: "center", margin: 2 + "em" }}>About</h2>
       <img
         className="img-fluid rounded mx-auto d-block about-img"

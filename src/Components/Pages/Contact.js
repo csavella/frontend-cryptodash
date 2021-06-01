@@ -26,12 +26,12 @@ const Contact = () => {
 
   function checkEmailAddress() {
     var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if(emailAddress.match(email_regex)) {
-        return true;
+    if (emailAddress.match(email_regex)) {
+      return true;
     }
-    alert("Error: please enter a valid email address")
+    alert("Error: please enter a valid email address");
     return false;
-}
+  }
 
   function sendEmail() {
     var templateParams = {
@@ -42,17 +42,17 @@ const Contact = () => {
       message: message,
     };
 
-    if(fullName === ""){
+    if (fullName === "") {
       alert("ERROR: Name is required.");
       return;
     }
 
-    if(emailAddress === "") {
+    if (emailAddress === "") {
       alert("ERROR: Email is required.");
       return;
     }
 
-    if(!checkEmailAddress()){
+    if (!checkEmailAddress()) {
       return;
     }
 
@@ -72,7 +72,9 @@ const Contact = () => {
         }
       );
 
-    alert('Thank you! We received your message and we will get back to you back ASAP.');
+    alert(
+      "Thank you! We received your message and we will get back to you back ASAP."
+    );
   }
 
   return (
@@ -92,11 +94,7 @@ const Contact = () => {
                   onChange={(e) => handleNameChange(e.target.value)}
                   required
                 />
-                <Form.Text
-                  id="fullName"
-                  name="fullName"
-                  value={fullName}
-                />
+                <Form.Text id="fullName" name="fullName" value={fullName} />
               </Form.Group>
               <Form.Group style={{ marginBottom: 1 + "em" }}>
                 <Form.Label>Email Address</Form.Label>

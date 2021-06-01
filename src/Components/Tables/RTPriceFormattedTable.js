@@ -1,8 +1,8 @@
-import {useState} from "react";
+import { useState } from "react";
 import RTPriceTable from "./RTPriceTable";
 import FavoriteCoins from "./FavoriteCoins";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
   const columns = [
@@ -82,24 +82,30 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
     setFavoriteCoins([...tempFaves]);
   }
 
-  function changeColor(){
-    if(iconColor === "black") {
+  function changeColor() {
+    if (iconColor === "black") {
       setIconColor("blue");
     } else {
       setIconColor("black");
     }
-    
   }
 
   function starIconFormatter(cell, row) {
     if (cell === null) return <p></p>;
     return (
-      <button className="btn favorite" onClick={() => handleclick({ row })} style={{backgroundColor: "transparent"}}>
-      <FontAwesomeIcon
-        onClick={() => changeColor()}
-        icon={faStar}
-        style={{color: {iconColor}}}
-      >{cell}</FontAwesomeIcon></button>
+      <button
+        className="btn favorite"
+        onClick={() => handleclick({ row })}
+        style={{ backgroundColor: "transparent" }}
+      >
+        <FontAwesomeIcon
+          onClick={() => changeColor()}
+          icon={faStar}
+          style={{ color: { iconColor } }}
+        >
+          {cell}
+        </FontAwesomeIcon>
+      </button>
     );
   }
 
@@ -116,11 +122,16 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
     );
   }
   // Eric added in for navigating to results pages
-  function nameFormatter(cell, row){
-    if(cell === null) return <p></p>;
+  function nameFormatter(cell, row) {
+    if (cell === null) return <p></p>;
     return (
-      <a href={"/frontend-cryptodash/search/" + row.id} className="anchor-name-item">{cell}</a>
-    )
+      <a
+        href={"/frontend-cryptodash/search/" + row.id}
+        className="anchor-name-item"
+      >
+        {cell}
+      </a>
+    );
   }
 
   function priceFormatter(cell, row) {
@@ -141,7 +152,10 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
   return (
     <div>
       <RTPriceTable columns={columns} />
-      <FavoriteCoins faves={ favoriteCoins} setFavoriteCoins={setFavoriteCoins }/>
+      <FavoriteCoins
+        faves={favoriteCoins}
+        setFavoriteCoins={setFavoriteCoins}
+      />
     </div>
   );
 }

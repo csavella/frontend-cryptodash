@@ -23,7 +23,7 @@ export default function LineChart (){
         getCoinData();
         const timer = setTimeout(() =>{
             setTime(time +1);
-        },60000);
+        },1200000);
         return () => clearTimeout(timer);
     },[time]);
     
@@ -97,8 +97,8 @@ export default function LineChart (){
                 dates_7d.push(date.newdate);               
             }
              
-            dates_7d = dates_7d.slice(length - 160);               
-            dates_24h = dates_7d.slice(length-31);
+            dates_7d = dates_7d.slice(length - 161);               
+            dates_24h = dates_7d.slice(length-30);
             console.log('24h '+dates_24h.length)
             setDates24h(dates_24h);
             setDates7d(dates_7d);
@@ -139,7 +139,7 @@ export default function LineChart (){
             data: (Object.values(chartdata)[0]),
             fill: false,
             backgroundColor: 'rgb(250, 169, 0)',
-            borderColor: 'rgba(77, 77, 78,0.2)',
+            borderColor: 'rgba(250, 169, 0,0.2)'//77, 77, 78,0.2)',
           },
           {
             yAxisID: 'B',
@@ -155,7 +155,7 @@ export default function LineChart (){
             data: (Object.values(chartdata)[4]),
             fill: false,
             backgroundColor: 'rgb(193, 9, 97)',
-            borderColor: 'rgba(48, 55, 54,0.2)',
+            borderColor: 'rgba(193, 9, 97,0.2)'//48, 55, 54,0.2)',
           },
           {
             yAxisID: 'D',
@@ -163,7 +163,7 @@ export default function LineChart (){
             data: (Object.values(chartdata)[3]),
             fill: false,
             backgroundColor: 'rgb(42, 113, 208)',
-            borderColor: 'rgba(0,0,0,0.2)',
+            borderColor: 'rgba(42, 113, 208,0.2)'//0,0,0,0.2)',
           },
           {
             yAxisID: 'E',
@@ -171,7 +171,7 @@ export default function LineChart (){
             data: (Object.values(chartdata)[2]),
             fill: false,
             backgroundColor: 'rgb(80,175,149)',
-            borderColor: 'rgba(92,91,94,0.2)',
+            borderColor: 'rgba(80,175,149,0.2)'//92,91,94,0.2)',
           },
         ],
       };
@@ -183,17 +183,20 @@ export default function LineChart (){
         type: 'category',     
         ticks:{
             autoSkip:true,   
+            count:24,
+            maxTicksLimit: 24,
             callback:function(value, index){
                 let date = this.getLabelForValue(value);
-                let date_2 = this.getLabelForValue(value-4);
+                let date_2 = this.getLabelForValue(value-7);
                 let date2 = date_2.toString().split(' ')[1];
                 let date1 = date.split(' ')[1];
 
-                if( index%4 === 0 &&  date1 !== date2 ){
-                  return date;
-                }else if(index === 0 || index === 167|| index === 23){
+                if( index%7 === 0 &&  date1 !== date2 ){
                   return date;
                 }
+                // else if(index === 0 || index === 167|| index === 23){
+                //   return date;
+                // }
                 else{
                   return date.split(' ')[2];
                 }

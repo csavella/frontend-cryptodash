@@ -97,7 +97,11 @@ export default function PairTable(){
         let UTC_to_PST = (parseInt(time[0]) - 7 ) +':' + time[1] + ':' + time[2];
         if(parseInt(time[0]) - 7 === 24)
            UTC_to_PST = '00:' + time[1] + ':'+ time[2];
-        
+        if(parseInt(time[0]) - 7 < 0){
+            let num = parseInt(time[0] - 7)*(-1);
+            UTC_to_PST = '1'+ num+':'+time[1] + ':'+time[2];
+        }
+
         data.tickers.forEach(element => {
             if(element.target === uppercase_key){
                 market = element.market.name;
@@ -112,7 +116,7 @@ export default function PairTable(){
             low: data.market_data.low_24h[key],
             change: data.market_data.price_change_percentage_24h_in_currency[key]+'%',
             volume: data.market_data.total_volume[key],
-            time: UTC_to_PST//time
+            time: UTC_to_PST
         } 
     }
     /*Creates pair data for pop up box*/

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState,useMemo } from "react";
+import { useState, useMemo } from "react";
 import Navbar from "../Navigation/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -11,14 +11,14 @@ import Resources from "./Resources";
 import ScrollToTop from "../Navigation/ScrollToTop";
 import { chartContext } from "../chartContext";
 import Glossary from "../Glossary/Glossary";
-import {pairContext} from "../CryptoPair/pairContext";
+import { pairContext } from "../CryptoPair/pairContext";
 import Contact from "./Contact";
 
 function App() {
-  const [value,setValue] = useState(null);
-  const chartValue = useMemo(() => ({value,setValue}),[value, setValue])
-  const[pair,setPair] = useState(null);
-  const pairTableValue = useMemo(() => ({pair,setPair}),[pair,setPair]);
+  const [value, setValue] = useState(null);
+  const chartValue = useMemo(() => ({ value, setValue }), [value, setValue]);
+  const [pair, setPair] = useState(null);
+  const pairTableValue = useMemo(() => ({ pair, setPair }), [pair, setPair]);
   const [favoriteCoins, setFavoriteCoins] = useState([]);
 
   return (
@@ -36,7 +36,7 @@ function App() {
                 />
               </chartContext.Provider>
             </pairContext.Provider>
-          </Route>         
+          </Route>
           <Route path="/search">
             <Search />
           </Route>

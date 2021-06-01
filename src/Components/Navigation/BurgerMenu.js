@@ -16,7 +16,7 @@ export default class SlideMenu extends React.Component {
           Exchanges
         </Link>
         <Link to="/glossary" id="glossary" className="menu-item">
-          Glossary 
+          Glossary
         </Link>
         <Link to="/about" id="about" className="menu-item">
           About

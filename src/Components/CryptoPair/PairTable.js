@@ -78,7 +78,7 @@ export default function PairTable() {
         }
         const timer = setTimeout(() =>{
             setTime(time +1);
-        },90000);
+        },60000);
         return () => clearTimeout(timer);
     },[time]);
 

@@ -124,6 +124,7 @@ const Contact = () => {
                 ></Form.Control>
               </Form.Group>
               <Button
+                type="submit"
                 variant="dark"
                 className="btn btn-dark btn-block"
                 onClick={() => sendEmail()}

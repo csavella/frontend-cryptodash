@@ -109,6 +109,7 @@ fieldset {
   font-size: 25px;
   font-family: fantasy;
   cursor: pointer;
+  z-index: 5;
 }
 
 #x-btn:hover {

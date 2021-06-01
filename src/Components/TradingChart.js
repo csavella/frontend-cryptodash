@@ -24,7 +24,7 @@ export default function LineChart() {
     getCoinData();
     const timer = setTimeout(() => {
       setTime(time + 1);
-    }, 60000);
+    }, 600000);
     return () => clearTimeout(timer);
   }, [time]);
 

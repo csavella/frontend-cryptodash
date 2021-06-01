@@ -98,8 +98,8 @@ export default function PairTable(){
         if(parseInt(time[0]) - 7 === 24)
            UTC_to_PST = '00:' + time[1] + ':'+ time[2];
         if(parseInt(time[0]) - 7 < 0){
-            let num = parseInt(time[0] - 7)*(-1);
-            UTC_to_PST = '1'+ num+':'+time[1] + ':'+time[2];
+            let num = 24 + (parseInt(time[0] - 7));//*(-1));
+            UTC_to_PST =  num+':'+time[1] + ':'+time[2];
         }
 
         data.tickers.forEach(element => {

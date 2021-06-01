@@ -47,11 +47,10 @@ div.bm-menu-wrap {
 .menu-item:hover {
   background-color: rgb(105, 97, 143);
   outline: none;
-  z-index: 11;
+  color: blue;
 }
 .menu-item:focus {
   outline: none;
-  z-index: 11;
 }
 .bm-burger-button #react-burger-menu-btn {
   width: 50px !important;

@@ -3,8 +3,9 @@ import React from 'react';
 const Navbar = () => {
    
         return ( 
+            <div>
             <nav className="navbar">
-                <h1 >CryptoDash</h1>
+                <h1 className="navheader">CryptoDash</h1>
                 <div  className="links">
                       <div className="menu" >      
                          <div className="menu-line"id="line1"></div>
@@ -13,6 +14,8 @@ const Navbar = () => {
                       </div>  
                 </div>
             </nav> 
+            <div className="offset_top"></div>
+            </div>
          );  
 }
  

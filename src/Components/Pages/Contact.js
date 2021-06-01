@@ -8,11 +8,12 @@ const Contact = () => {
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
 
-  function sendMessage() {
-    console.log("Name: " + fullName);
-    console.log("Email: " + emailAddress);
-    console.log("Message: " + message);
-  }
+  // Used for debugging
+  // function consoleLog() {
+  //   console.log("Name: " + fullName);
+  //   console.log("Email: " + emailAddress);
+  //   console.log("Message: " + message);
+  // }
 
   function handleNameChange(value) {
     setFullName(value);

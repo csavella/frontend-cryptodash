@@ -7,15 +7,15 @@ function FavoriteCoins({ faves, setFavoriteCoins }) {
     var changed = false;
     var tempFaves = faves;
 
-    for(var i = 0; i < faves.length; i++){
-      if(faves[i].row.rank === coinRank){
+    for (var i = 0; i < faves.length; i++) {
+      if (faves[i].row.rank === coinRank) {
         tempFaves.splice(i, 1);
         changed = true;
         break;
       }
     }
 
-    if(changed) {
+    if (changed) {
       setFavoriteCoins([...tempFaves]);
     }
   }
@@ -41,26 +41,30 @@ function FavoriteCoins({ faves, setFavoriteCoins }) {
       );
     }
 
-    let newCarousel = faves.map(data => {
-      return(
-      <Carousel.Item key={data.row.rank}>
+    let newCarousel = faves.map((data) => {
+      return (
+        <Carousel.Item key={data.row.rank}>
           <Card
-          className="default-faves d-block w-75"
-          style={{ margin: "auto" }}
-        >
-          <Card.Header>Favorite Coins</Card.Header>
-          <Card.Body>
-            <Card.Title>{data.row.name}</Card.Title>
-            <Card.Text>
-              Price: ${data.row.price}<br></br>
-              Rank: {data.row.rank}<br></br>
-              Percentage Change: {data.row.percentageChange}&#37;<br></br>
-              Market Cap: {data.row.marketCap}
-            </Card.Text>
-            <Card.Link>More Info</Card.Link>
-            <Card.Link onClick={() => removeCard(data.row.rank)}>Remove</Card.Link>
-          </Card.Body>
-        </Card>
+            className="default-faves d-block w-75"
+            style={{ margin: "auto" }}
+          >
+            <Card.Header>Favorite Coins</Card.Header>
+            <Card.Body>
+              <Card.Title>{data.row.name}</Card.Title>
+              <Card.Text>
+                Price: ${data.row.price}
+                <br></br>
+                Rank: {data.row.rank}
+                <br></br>
+                Percentage Change: {data.row.percentageChange}&#37;<br></br>
+                Market Cap: {data.row.marketCap}
+              </Card.Text>
+              <Card.Link>More Info</Card.Link>
+              <Card.Link onClick={() => removeCard(data.row.rank)}>
+                Remove
+              </Card.Link>
+            </Card.Body>
+          </Card>
         </Carousel.Item>
       );
     });
@@ -71,8 +75,10 @@ function FavoriteCoins({ faves, setFavoriteCoins }) {
   return (
     <div>
       <Container>
-      <Carousel slide={false} fade={false}>{createSlides()}</Carousel>
-      <hr></hr>
+        <Carousel slide={false} fade={false}>
+          {createSlides()}
+        </Carousel>
+        <hr></hr>
       </Container>
     </div>
   );

@@ -1,0 +1,13 @@
+.resource-link {
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.resource-link:hover, .resource-link:active {
+    color: darkslategray;
+}
+
+.resources-page {
+    margin-top: 2em;
+}

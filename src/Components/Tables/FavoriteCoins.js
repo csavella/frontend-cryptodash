@@ -1,6 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
+import "./FavoriteCoins.css";
 
 function FavoriteCoins({ faves, setFavoriteCoins }) {
   function removeCard(coinRank) {
@@ -59,7 +60,9 @@ function FavoriteCoins({ faves, setFavoriteCoins }) {
                 Percentage Change: {data.row.percentageChange}&#37;<br></br>
                 Market Cap: {data.row.marketCap}
               </Card.Text>
-              <Card.Link>More Info</Card.Link>
+              <Card.Link href={"/frontend-cryptodash/search/" + data.row.id}>
+                More Info
+              </Card.Link>
               <Card.Link onClick={() => removeCard(data.row.rank)}>
                 Remove
               </Card.Link>
@@ -74,7 +77,7 @@ function FavoriteCoins({ faves, setFavoriteCoins }) {
 
   return (
     <div>
-      <Container>
+      <Container className="carousel">
         <Carousel slide={false} fade={false}>
           {createSlides()}
         </Carousel>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class SlideMenu extends React.Component {
   render() {
     return (
-      <Menu isOpen={false} right disableCloseOnEsc disableAutoFocus>
+      <Menu isOpen={false} right disableCloseOnEsc disableAutoFocus role="navigation">
         <Link to="/" id="home" className="menu-item">
           Home
         </Link>

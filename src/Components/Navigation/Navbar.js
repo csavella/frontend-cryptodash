@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div>
+    <div role="region">
       <nav className="navbar">
         <h1 className="navheader">CryptoDash</h1>
         <div className="links">

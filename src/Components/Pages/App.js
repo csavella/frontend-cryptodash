@@ -22,7 +22,7 @@ function App() {
   const [favoriteCoins, setFavoriteCoins] = useState([]);
 
   return (
-    <div className="App">
+    <div className="App" role="main">
       <Router basename={process.env.PUBLIC_URL}>
         <Navbar />
         <BurgerMenu />

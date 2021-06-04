@@ -276,6 +276,7 @@ export default function PairTable() {
         columns={columns}
         showPagination={false}
         defaultPageSize={3}
+        tabIndex="0"
       />
       <div>
         <fieldset>

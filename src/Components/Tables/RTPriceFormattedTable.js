@@ -8,7 +8,7 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
   const columns = [
     {
       dataField: "favorite",
-      text: "",
+      text: "Fave",
       formatter: starIconFormatter,
     },
     {

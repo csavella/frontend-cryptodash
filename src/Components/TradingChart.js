@@ -243,10 +243,10 @@ export default function LineChart (){
     <div className="trading-chart" style={{height:"400px",width:"80vw",marginLeft:"auto",marginRight:"auto",marginTop:"50px"}}>
       <div className='header'>
         <h1 className='title' style={{fontSize:"25px", fontFamily:"sans-serif"}}>Cryptocurrency Trading Rates</h1>
-        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle24h}>24h</button>
-        <button style={{borderRadius:'5px',backgroundColor: 'gray',color: 'white'}} onClick={handle7d}>7d</button>
+        <button style={{borderRadius:'5px',backgroundColor: 'black',color: 'white'}} onClick={handle24h}>24h</button>
+        <button style={{borderRadius:'5px',backgroundColor: 'black',color: 'white'}} onClick={handle7d}>7d</button>
       </div>
-      <Line data={data} options={options} />
+      <Line data={data} options={options} title="crypto-trading-rates"/>
     </div>
   );
 }

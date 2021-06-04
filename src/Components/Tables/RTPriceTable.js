@@ -131,8 +131,7 @@ function RTPriceTable({ columns }) {
                 bordered
                 hover
                 size="sm"
-                responsive
-                className="col-12"
+                wrapperClasses="table-responsive"
                 {...props.baseProps}
               />
             </div>

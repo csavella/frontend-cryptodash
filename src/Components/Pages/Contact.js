@@ -95,7 +95,15 @@ const Contact = () => {
                   onChange={(e) => handleNameChange(e.target.value)}
                   required
                 />
-                <Form.Text id="fullName" name="fullName" value={fullName} />
+                <Form.Text
+                  id="fullName"
+                  name="fullName"
+                  value={fullName}
+                  aria-describedby="nameHelp"
+                />
+                <div id="nameHelp" hidden="true">
+                  Enter your full name
+                </div>
               </Form.Group>
               <Form.Group style={{ marginBottom: 1 + "em" }}>
                 <Form.Label>Email Address</Form.Label>
@@ -112,6 +120,9 @@ const Contact = () => {
                   aria-describedby="emailHelp"
                   value={emailAddress}
                 />
+                <div id="emailHelp" hidden="true">
+                  Enter your email address
+                </div>
               </Form.Group>
               <Form.Group style={{ marginBottom: 1 + "em" }}>
                 <Form.Label>Message</Form.Label>

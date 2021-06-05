@@ -95,6 +95,7 @@ function RTPriceFormattedTable({ favoriteCoins, setFavoriteCoins }) {
     return (
       <button
         className="btn favorite"
+        title="star"
         onClick={() => handleclick({ row })}
         style={{ backgroundColor: "transparent" }}
       >

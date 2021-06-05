@@ -23,7 +23,7 @@ const ScrollToTop = () => {
   window.addEventListener("scroll", toggleVisible);
 
   return (
-    <button className="go-to-top">
+    <button className="go-to-top" title="scroll">
       <FaArrowCircleUp
         onClick={scrollToTop}
         style={{
